@@ -72,8 +72,13 @@ Download Nightly releases
 
 Ensure you have
 
-- [Node.js](https://nodejs.org) 10 or later installed
+- [Node.js](https://nodejs.org) 14 or later installed
 - [Yarn](https://yarnpkg.com) v1 or v2 installed
+
+Suppported but not required
+
+- [nodenv](https://github.com/nodenv/nodenv)
+- [nvm](https://github.com/nvm-sh/nvm#intro)
 
 Then run the following:
 
