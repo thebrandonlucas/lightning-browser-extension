@@ -130,3 +130,6 @@ dist/
 .awcache
 
 .pnp.*
+test-results/
+playwright-report/
+trace.zip
