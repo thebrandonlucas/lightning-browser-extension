@@ -39,6 +39,7 @@ const loadExtension = async () => {
 
 test.describe("Create or connect wallets", () => {
   test("successfully creates an Alby wallet", async () => {
+    process.env['WALLET_CREATE_URL'] = 'https://app.regtest.getalby.com/api/users';
     const user = USER.SINGLE();
 
     const { page } = await loadExtension();
