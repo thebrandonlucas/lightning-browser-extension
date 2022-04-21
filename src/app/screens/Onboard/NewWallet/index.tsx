@@ -7,7 +7,7 @@ import QRCode from "react-qr-code";
 import utils from "../../../../common/lib/utils";
 
 const walletCreateUrl =
-  process.env.WALLET_CREATE_URL || "https://getalby.com/api/users";
+  process.env.WALLET_CREATE_URL || "https://app.regtest.getalby.com/api/users";
 
 export default function NewWallet() {
   const [lndHubData, setLndHubData] = useState({
