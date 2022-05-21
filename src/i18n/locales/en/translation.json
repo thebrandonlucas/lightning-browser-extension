@@ -183,7 +183,18 @@
     "start9": {
       "title": "Start9",
       "description": "Connect to your Embassy",
-      "page_description": {}
+      "page_title": "Connect to your Embassy node",
+      "page_description": {
+        "part1": "<0>Note</0>: Currently we only support LND but we will be adding c-lightning support in the future!",
+        "part2": "On your Embassy dashboard click on the <0>Lightning Network Daemon</0> service.",
+        "part3": "Select the <0>Properties</0> tab.",
+        "part4": "Now copy the <0>LND Connect REST URL</0>."
+      },
+      "url_label": "lndconnect REST URL",
+      "url_placeholder": "lndconnect://yournode:8080?...",
+      "errors": {
+        "connection_failed": "Connection failed. Are your Embassy credentials correct?"
+      }
     },
     "raspiblitz": {
       "title": "RaspiBlitz",

@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -12,8 +14,13 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
+const descriptionKeyPrefix = "choose_connector.start9.page_description";
+
 export default function ConnectStart9() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.start9",
+  });
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
 
@@ -75,11 +82,11 @@ export default function ConnectStart9() {
         }
       } else {
         alert(`
-          Connection failed. Are your Embassy credentials correct? \n\n(${validation.error})`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = "Connection failed. Are your Embassy credentials correct?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -90,16 +97,28 @@ export default function ConnectStart9() {
 
   return (
     <ConnectorForm
-      title="Connect to your Embassy node"
+      title={t("page_title")}
       description={
         <p>
-          <strong>Note</strong>: Currently we only support LND but we will be
-          adding c-lightning support in the future! <br />
-          On your Embassy dashboard click on the{" "}
-          <strong>Lightning Network Daemon</strong> service.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.part1`}
+            components={[<strong />]}
+          />
           <br />
-          Select the <strong>Properties</strong> tab.
-          <br /> Now copy the <strong>LND Connect REST URL</strong>.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.part2`}
+            components={[<strong />]}
+          />
+          <br />
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.part3`}
+            components={[<strong />]}
+          />
+          <br />{" "}
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.part4`}
+            components={[<strong />]}
+          />
         </p>
       }
       submitLoading={loading}
@@ -108,8 +127,8 @@ export default function ConnectStart9() {
     >
       <TextField
         id="lndconnect"
-        label="lndconnect REST URL"
-        placeholder="lndconnect://yournode:8080?..."
+        label={t("url_label")}
+        placeholder={t("url_placeholder")}
         onChange={handleLndconnectUrl}
         required
       />
