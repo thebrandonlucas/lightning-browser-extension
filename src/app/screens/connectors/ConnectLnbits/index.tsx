@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -8,6 +9,9 @@ import TextField from "@components/form/TextField";
 
 export default function ConnectLnbits() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.lnbits",
+  });
   const [formData, setFormData] = useState({
     adminkey: "",
     url: "https://legend.lnbits.com",
@@ -61,14 +65,11 @@ export default function ConnectLnbits() {
         }
       } else {
         console.log(validation);
-        alert(
-          `Connection failed. Do you have the correct URL and Admin Key? \n\n(${validation.error})`
-        );
+        alert(`${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message =
-        "Connection failed. Do you have the correct URL and Admin Key?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -79,7 +80,7 @@ export default function ConnectLnbits() {
 
   return (
     <ConnectorForm
-      title="Connect to LNbits"
+      title={t("lnbits")}
       submitLoading={loading}
       submitDisabled={formData.adminkey === "" || formData.url === ""}
       onSubmit={handleSubmit}
@@ -87,7 +88,7 @@ export default function ConnectLnbits() {
       <div className="mb-6">
         <TextField
           id="adminkey"
-          label="LNbits Admin Key"
+          label={t("admin_key")}
           type="text"
           required
           onChange={handleChange}

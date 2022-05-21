@@ -71,13 +71,11 @@ export default function ConnectLnd() {
         }
       } else {
         alert(`
-          ${t("pre_connect.errors.connection_failed")} \n\n(${
-          validation.error
-        })`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = t("pre_connect.errors.correct_credentials");
+      let message = t("errors.correct_credentials");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -130,8 +128,8 @@ export default function ConnectLnd() {
 
   return (
     <ConnectorForm
-      title={t("pre_connect.title")}
-      description={t("pre_connect.description")}
+      title={t("page_title")}
+      description={t("page_description")}
       submitLoading={loading}
       submitDisabled={formData.url === "" || formData.macaroon === ""}
       onSubmit={handleSubmit}
@@ -139,10 +137,10 @@ export default function ConnectLnd() {
       <div className="mb-6">
         <TextField
           id="url"
-          label={t("pre_connect.port_label")}
+          label={t("port_label")}
           placeholder="https://your-node-url:8080"
           pattern="https://.+"
-          title={t("pre_connect.url_placeholder")}
+          title={t("url_placeholder")}
           onChange={handleChange}
           required
         />
@@ -156,15 +154,13 @@ export default function ConnectLnd() {
         <div>
           <TextField
             id="macaroon"
-            label={t("pre_connect.macaroon_label")}
+            label={t("macaroon_label")}
             value={formData.macaroon}
             onChange={handleChange}
             required
           />
         </div>
-        <p className="text-center my-4 dark:text-white">
-          {t("pre_connect.or")}
-        </p>
+        <p className="text-center my-4 dark:text-white">{t("or")}</p>
         <div
           className={`cursor-pointer flex flex-col items-center dark:bg-surface-02dp p-4 py-3 border-dashed border-2 border-gray-300 bg-gray-50 rounded-md text-center transition duration-200 ${
             isDragging ? "border-blue-500 bg-blue-50" : ""
@@ -178,10 +174,8 @@ export default function ConnectLnd() {
         >
           <SendIcon className="mb-3 h-6 w-6 text-blue-500" />
           <p className="dark:text-white">
-            {t("pre_connect.drag_and_drop.part1")}{" "}
-            <span className="underline">
-              {t("pre_connect.drag_and_drop.part2")}
-            </span>
+            {t("drag_and_drop.part1")}{" "}
+            <span className="underline">{t("drag_and_drop.part2")}</span>
           </p>
           <input
             ref={hiddenFileInput}

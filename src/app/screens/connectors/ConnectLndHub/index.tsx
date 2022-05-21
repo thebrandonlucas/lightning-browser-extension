@@ -39,7 +39,7 @@ export default function ConnectLndHub() {
     setLoading(true);
     const match = formData.uri.match(/lndhub:\/\/(\S+):(\S+)@(\S+)/i);
     if (!match) {
-      alert(t("pre_connect.errors.invalid_uri"));
+      alert(t("errors.invalid_uri"));
       setLoading(false);
       return;
     }
@@ -75,15 +75,11 @@ export default function ConnectLndHub() {
         }
       } else {
         console.log(validation);
-        alert(
-          `${t("pre_connect.errors.connection_failed")} \n\n(${
-            validation.error
-          })`
-        );
+        alert(`${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = t("pre_connect.errors.connection_failed");
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -94,8 +90,8 @@ export default function ConnectLndHub() {
 
   return (
     <ConnectorForm
-      title={t("pre_connect.title")}
-      description={t("pre_connect.description")}
+      title={t("page_title")}
+      description={t("page_description")}
       submitLoading={loading}
       submitDisabled={formData.uri === ""}
       onSubmit={handleSubmit}
@@ -103,7 +99,7 @@ export default function ConnectLndHub() {
       <div className="mb-6">
         <TextField
           id="uri"
-          label={t("pre_connect.lndhub_uri")}
+          label={t("lndhub_uri")}
           type="text"
           required
           placeholder="lndhub://..."
