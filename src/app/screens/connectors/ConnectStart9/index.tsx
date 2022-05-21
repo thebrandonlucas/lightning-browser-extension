@@ -14,8 +14,6 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
-const descriptionKeyPrefix = "choose_connector.start9.page_description";
-
 export default function ConnectStart9() {
   const navigate = useNavigate();
   const { t } = useTranslation("translation", {
@@ -101,22 +99,26 @@ export default function ConnectStart9() {
       description={
         <p>
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part1`}
+            i18nKey={"page_description.part1"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part2`}
+            i18nKey={"page_description.part2"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part3`}
+            i18nKey={"page_description.part3"}
+            t={t}
             components={[<strong />]}
           />
           <br />{" "}
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part4`}
+            i18nKey={"page_description.part4"}
+            t={t}
             components={[<strong />]}
           />
         </p>

@@ -102,15 +102,15 @@ export default [
   {
     path: galoyPaths.bitcoinBeach,
     element: <ConnectGaloy instance={galoyPaths.bitcoinBeach} />,
-    title: i18n.t("choose_connector.bitcoin_beach.title"),
-    description: i18n.t("choose_connector.bitcoin_beach.description"),
+    title: i18n.t("choose_connector.galoy.bitcoin_beach.title"),
+    description: i18n.t("choose_connector.galoy.bitcoin_beach.description"),
     logo: galoyBitcoinBeach,
   },
   {
     path: galoyPaths.bitcoinJungle,
     element: <ConnectGaloy instance={galoyPaths.bitcoinJungle} />,
-    title: i18n.t("choose_connector.bitcoin_jungle.title"),
-    description: i18n.t("choose_connector.bitcoin_jungle.description"),
+    title: i18n.t("choose_connector.galoy.bitcoin_jungle.title"),
+    description: i18n.t("choose_connector.galoy.bitcoin_jungle.description"),
     logo: galoyBitcoinJungle,
   },
 ];

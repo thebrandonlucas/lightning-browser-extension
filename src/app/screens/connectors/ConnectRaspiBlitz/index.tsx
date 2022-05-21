@@ -12,8 +12,6 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
-const descriptionKeyPrefix = "choose_connector.raspiblitz.page_description";
-
 export default function ConnectRaspiBlitz() {
   const navigate = useNavigate();
   const { t } = useTranslation("translation", {
@@ -98,26 +96,30 @@ export default function ConnectRaspiBlitz() {
       title={t("page_title")}
       description={
         <p>
-          {t("page_description.rest_api.part1")}
+          {t("page_description.rest_host.part1")}
           <br />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.rest_api.part2`}
+            i18nKey={"page_description.rest_host.part2"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.rest_api.part3`}
+            i18nKey={"page_description.rest_host.part3"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.rest_api.part4`}
+            i18nKey={"page_description.rest_host.part4"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.rest_api.part5`}
+            i18nKey={"page_description.rest_host.part5"}
+            t={t}
             components={[<strong />]}
           />
         </p>
@@ -140,22 +142,26 @@ export default function ConnectRaspiBlitz() {
       <div className="mt-6">
         <p className="mb-6 text-gray-500 mt-6 dark:text-gray-400">
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.macaroon.part1`}
+            i18nKey={"page_description.macaroon.part1"}
+            t={t}
             components={[<b />]}
           />{" "}
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.macaroon.part2`}
+            i18nKey={"page_description.macaroon.part2"}
+            t={t}
             components={[<b />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.macaroon.part3`}
+            i18nKey={"page_description.macaroon.part3"}
+            t={t}
             components={[<b />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.macaroon.part4`}
+            i18nKey={"page_description.macaroon.part4"}
+            t={t}
             components={[<b />]}
           />
           <br />

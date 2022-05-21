@@ -201,7 +201,7 @@
       "description": "Connect to your RaspiBlitz",
       "page_title": "Connect to your RaspiBlitz node",
       "page_description": {
-        "rest_api": {
+        "rest_host": {
           "part1": "You need your node onion address, port, and a macaroon with read and send permissions (e.g. admin.macaroon).",
           "part2": "<0>SSH</0> into your <0>RaspiBlitz</0>.",
           "part3": "Run the command <0>sudo cat /mnt/hdd/tor/lndrest8080/hostname</0>.",
@@ -223,17 +223,35 @@
         "connection_failed": "Connection failed. Are your RaspiBlitz credentials correct?"
       }
     },
-    "bitcoin_beach": {
-      "title": "Bitcoin Beach Wallet",
-      "description": "Create or connect to a Bitcoin Beach (Galoy) account",
-      "pre_connect": {},
-      "post_connect": {}
-    },
-    "bitcoin_jungle": {
-      "title": "Bitcoin Jungle Wallet",
-      "description": "Create or connect to a Bitcoin Jungle (Galoy) account",
-      "pre_connect": {},
-      "post_connect": {}
+    "galoy": {
+      "login": "Login",
+      "request_sms_code": "Request SMS Code",
+      "enter_phone_number_label": "Enter your phone number",
+      "enter_sms_code_label": "Enter your SMS verification code",
+      "jwt_upgrade_note": {
+        "part1": "The {{label}} login is currently being upgraded.",
+        "part2": " If you are an advanced user, you can grab your JWT token by logging in via the <0>Web Wallet (wallet.mainnet.galoy.io).</0>",
+        "part3": "The JWT looks like: <0>eyJhbG...</0>"
+      },
+      "enter_jwt_token": "Enter your JWT token",
+      "bitcoin_beach": {
+        "title": "Bitcoin Beach Wallet",
+        "description": "Create or connect to a Bitcoin Beach (Galoy) account",
+        "page_label": "Bitcoin Beach Wallet"
+      },
+      "bitcoin_jungle": {
+        "title": "Bitcoin Jungle Wallet",
+        "description": "Create or connect to a Bitcoin Jungle (Galoy) account",
+        "page_label": "Bitcoin Jungle Wallet"
+      },
+      "errors": {
+        "sms_code_request": "Failed to request a SMS code",
+        "sms_code_login": "Failed to login with SMS code",
+        "setup_failed": "Setup failed",
+        "missing_jwt": "JWT missing, couldn't log in.",
+        "invalid_jwt": "invalid JWT passed",
+        "connection_failed": "Connection failed"
+      }
     }
   },
   "home": {

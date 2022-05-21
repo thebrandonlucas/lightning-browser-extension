@@ -14,8 +14,6 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
-const descriptionKeyPrefix = "choose_connector.mynode.page_description";
-
 export default function ConnectMyNode() {
   const navigate = useNavigate();
   const { t } = useTranslation("translation", {
@@ -109,18 +107,21 @@ export default function ConnectMyNode() {
                   https://stackoverflow.com/questions/61268001/react-i18n-trans-component-with-translations-that-contain-html-tags-not-working/71641812#71641812
           */}
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part1`}
+            i18nKey={"page_description.part1"}
+            t={t}
             components={[<strong />]}
           />
           <br />
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part2`}
+            i18nKey={"page_description.part2"}
+            t={t}
             components={[<strong />]}
           />{" "}
           <br />
           {t("page_description.part3")}
           <Trans
-            i18nKey={`${descriptionKeyPrefix}.part4`}
+            i18nKey={"page_description.part4"}
+            t={t}
             components={[<strong />, <b />]}
           />
         </p>
