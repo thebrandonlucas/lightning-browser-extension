@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -10,6 +11,9 @@ import CompanionDownloadInfo from "@components/CompanionDownloadInfo";
 
 export default function ConnectLndHub() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.lndhub",
+  });
   const [formData, setFormData] = useState({
     uri: "",
   });
@@ -35,7 +39,7 @@ export default function ConnectLndHub() {
     setLoading(true);
     const match = formData.uri.match(/lndhub:\/\/(\S+):(\S+)@(\S+)/i);
     if (!match) {
-      alert("Invalid LNDHub URI");
+      alert(t("pre_connect.errors.invalid_uri"));
       setLoading(false);
       return;
     }
@@ -72,12 +76,14 @@ export default function ConnectLndHub() {
       } else {
         console.log(validation);
         alert(
-          `Connection failed. Is your LNDHub URI correct? \n\n(${validation.error})`
+          `${t("pre_connect.errors.connection_failed")} \n\n(${
+            validation.error
+          })`
         );
       }
     } catch (e) {
       console.error(e);
-      let message = "Connection failed. Is your LNDHub URI correct?";
+      let message = t("pre_connect.errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -88,10 +94,8 @@ export default function ConnectLndHub() {
 
   return (
     <ConnectorForm
-      title="Connect to LNDHub (BlueWallet)"
-      description='In BlueWallet, choose the wallet you want to connect, open it, click
-      on "...", click on Export/Backup to display the QR code
-      and scan it with your webcam.'
+      title={t("pre_connect.title")}
+      description={t("pre_connect.description")}
       submitLoading={loading}
       submitDisabled={formData.uri === ""}
       onSubmit={handleSubmit}
@@ -99,7 +103,7 @@ export default function ConnectLndHub() {
       <div className="mb-6">
         <TextField
           id="uri"
-          label="LNDHub Export URI"
+          label={t("pre_connect.lndhub_uri")}
           type="text"
           required
           placeholder="lndhub://..."
