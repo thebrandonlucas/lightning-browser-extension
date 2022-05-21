@@ -204,6 +204,10 @@
     }
   },
   "components": {
-    "qrcode_scanner": {}
+    "qrcode_scanner": {
+      "scan_qrcode": "Scan QR Code",
+      "start_scanning": "Start scanning",
+      "stop_scanning": "Stop scanning"
+    }
   }
 }
