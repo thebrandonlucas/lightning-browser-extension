@@ -91,43 +91,63 @@
     },
     "lndhub": {
       "title": "LNDHub (Bluewallet)",
-      "description": "Connect to your Bluewallet mobile wallet"
+      "description": "Connect to your Bluewallet mobile wallet",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "lnbits": {
       "title": "LNbits",
-      "description": "Connect to your LNbits account"
+      "description": "Connect to your LNbits account",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "eclair": {
       "title": "Eclair",
-      "description": "Connect to your Eclair node"
+      "description": "Connect to your Eclair node",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "citadel": {
       "title": "Citadel",
-      "description": "Connect to your local Citadel"
+      "description": "Connect to your local Citadel",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "umbrel": {
       "title": "Umbrel",
-      "description": "Connect to your Umbrel"
+      "description": "Connect to your Umbrel",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "mynode": {
       "title": "myNode",
-      "description": "Connect to your myNode"
+      "description": "Connect to your myNode",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "start9": {
       "title": "Start9",
-      "description": "Connect to your Embassy"
+      "description": "Connect to your Embassy",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "raspiblitz": {
       "title": "RaspiBlitz",
-      "description": "Connect to your RaspiBlitz"
+      "description": "Connect to your RaspiBlitz",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "bitcoin_beach": {
       "title": "Bitcoin Beach Wallet",
-      "description": "Create or connect to a Bitcoin Beach (Galoy) account"
+      "description": "Create or connect to a Bitcoin Beach (Galoy) account",
+      "pre_connect": {},
+      "post_connect": {}
     },
     "bitcoin_jungle": {
       "title": "Bitcoin Jungle Wallet",
-      "description": "Create or connect to a Bitcoin Jungle (Galoy) account"
+      "description": "Create or connect to a Bitcoin Jungle (Galoy) account",
+      "pre_connect": {},
+      "post_connect": {}
     }
   },
   "home": {
