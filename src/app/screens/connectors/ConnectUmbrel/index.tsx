@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -14,6 +15,9 @@ const initialFormData = Object.freeze({
 
 export default function ConnectUmbrel() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.umbrel",
+  });
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
 
@@ -75,11 +79,11 @@ export default function ConnectUmbrel() {
         }
       } else {
         alert(`
-          Connection failed. Are your Umbrel credentials correct? \n\n(${validation.error})`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = "Connection failed. Are your Umbrel credentials correct?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -90,14 +94,18 @@ export default function ConnectUmbrel() {
 
   return (
     <ConnectorForm
-      title="Connect to your Umbrel node"
+      title={t("page_title")}
       description={
         <p>
-          In your Umbrel dashboard go to <strong>Connect Wallet</strong>.<br />
-          Select <strong>lndconnect REST</strong> and copy the{" "}
-          <strong>lndconnect URL</strong>. (Depending on your setup you can
-          either use the <em>local</em> connection or the <em>Tor</em>{" "}
-          connection.)
+          {t("page_description.part1")}{" "}
+          <strong>{t("page_description.part2")}</strong>.<br />
+          {t("page_description.part3")}{" "}
+          <strong>{t("page_description.part4")}</strong>{" "}
+          {t("page_description.part5")}{" "}
+          <strong>{t("page_description.part6")}</strong>.{" "}
+          {t("page_description.part7")} <em>{t("page_description.part8")}</em>{" "}
+          {t("page_description.part9")} <em>{t("page_description.part10")}</em>{" "}
+          {t("page_description.part11")}
         </p>
       }
       submitLoading={loading}
@@ -107,8 +115,8 @@ export default function ConnectUmbrel() {
     >
       <TextField
         id="lndconnect"
-        label="lndconnect REST URL"
-        placeholder="lndconnect://yournode:8080?..."
+        label={t("url_label")}
+        placeholder={t("url_placeholder")}
         onChange={handleLndconnectUrl}
         required
       />

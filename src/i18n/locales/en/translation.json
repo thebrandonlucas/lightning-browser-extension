@@ -123,20 +123,46 @@
     "eclair": {
       "title": "Eclair",
       "description": "Connect to your Eclair node",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_title": "Connect to Eclair",
+      "password": "Eclair Password",
+      "url": "Eclair URL",
+      "errors": {
+        "connection_failed": "Connection failed. Do you have the correct URL and password?"
+      }
     },
     "citadel": {
       "title": "Citadel",
       "description": "Connect to your local Citadel",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_title": "Connect to your Citadel Node",
+      "page_description": "This currently doesn't work if 2FA is enabled.",
+      "password": "Password",
+      "url": "Citadel URL",
+      "errors": {
+        "connection_failed": "Connection failed. Is your password correct?"
+      }
     },
     "umbrel": {
       "title": "Umbrel",
       "description": "Connect to your Umbrel",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_title": "Connect to your Umbrel node",
+      "page_description": {
+        "part1": "In your Umbrel dashboard go to",
+        "part2": "Connect Wallet",
+        "part3": "Select",
+        "part4": "lndconnect REST",
+        "part5": "and copy the",
+        "part6": "lndconnect URL",
+        "part7": "(Depending on your setup you can either use the",
+        "part8": "local",
+        "part9": "connection or the",
+        "part10": "Tor",
+        "part11": "connection.)"
+      },
+      "url_label": "lndconnect REST URL",
+      "url_placeholder": "lndconnect://yournode:8080?...",
+      "errors": {
+        "connection_failed": "Connection failed. Are your Umbrel credentials correct?"
+      }
     },
     "mynode": {
       "title": "myNode",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -8,6 +9,9 @@ import TextField from "@components/form/TextField";
 
 export default function ConnectEclair() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.eclair",
+  });
   const [formData, setFormData] = useState({
     password: "",
     url: "http://localhost:8080",
@@ -46,14 +50,11 @@ export default function ConnectEclair() {
         }
       } else {
         console.log(validation);
-        alert(
-          `Connection failed. Do you have the correct URL and password? \n\n(${validation.error})`
-        );
+        alert(`${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message =
-        "Connection failed. Do you have the correct URL and password?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -64,7 +65,7 @@ export default function ConnectEclair() {
 
   return (
     <ConnectorForm
-      title="Connect to Eclair"
+      title={t("page_title")}
       submitLoading={loading}
       submitDisabled={formData.password === "" || formData.url === ""}
       onSubmit={handleSubmit}
@@ -72,7 +73,7 @@ export default function ConnectEclair() {
       <div className="mb-6">
         <TextField
           id="password"
-          label="Eclair Password"
+          label={t("password")}
           type="text"
           required
           onChange={handleChange}
@@ -80,7 +81,7 @@ export default function ConnectEclair() {
       </div>
       <TextField
         id="url"
-        label="Eclair URL"
+        label={t("url")}
         type="text"
         value={formData.url}
         required

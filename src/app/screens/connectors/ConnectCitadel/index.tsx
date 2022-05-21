@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import TextField from "@components/form/TextField";
 import ConnectorForm from "@components/ConnectorForm";
@@ -8,6 +9,9 @@ import utils from "~/common/lib/utils";
 
 export default function ConnectCitadel() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.citadel",
+  });
   const [formData, setFormData] = useState({
     password: "",
     url: "http://citadel.local",
@@ -64,11 +68,11 @@ export default function ConnectCitadel() {
         }
       } else {
         alert(`
-          Connection failed. Is your password correct? \n\n(${validation.error})`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = "Connection failed. Is your password correct?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -79,15 +83,15 @@ export default function ConnectCitadel() {
 
   return (
     <ConnectorForm
-      title="Connect to your Citadel Node"
-      description="This currently doesn't work if 2FA is enabled."
+      title={t("page_title")}
+      description={t("page_description")}
       submitLoading={loading}
       submitDisabled={formData.password === "" || formData.url === ""}
       onSubmit={handleSubmit}
     >
       <div className="mb-6">
         <TextField
-          label="Password"
+          label={t("password")}
           id="password"
           type="password"
           required
@@ -95,7 +99,7 @@ export default function ConnectCitadel() {
         />
       </div>
       <TextField
-        label="Citadel URL"
+        label={t("url")}
         id="url"
         placeholder="citadel.local"
         type="text"
