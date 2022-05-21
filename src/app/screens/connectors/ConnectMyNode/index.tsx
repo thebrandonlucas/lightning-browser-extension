@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -12,8 +14,13 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
+const i18nKeyBase = "choose_connector.mynode.page_description";
+
 export default function ConnectMyNode() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.mynode",
+  });
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
 
@@ -75,11 +82,11 @@ export default function ConnectMyNode() {
         }
       } else {
         alert(`
-          Connection failed. Are your credentials correct? \n\n(${validation.error})`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message = "Connection failed. Are your credentials correct?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -90,18 +97,29 @@ export default function ConnectMyNode() {
 
   return (
     <ConnectorForm
-      title="Connect to your myNode"
+      title={t("page_title")}
       description={
         <p>
-          On your myNode homepage click on the <strong>Wallet</strong> button
-          for your <strong>Lightning</strong> service.
+          {/*
+            NOTE: <Trans /> component is meant for handling HTML interpolation.
+                  Unfortunately, the docs are not very helpful and typical
+                  use requires keeping the default language string in the
+                  component and JSON file in sync. Fortunately, this link shows
+                  how to use only the key:
+                  https://stackoverflow.com/questions/61268001/react-i18n-trans-component-with-translations-that-contain-html-tags-not-working/71641812#71641812
+          */}
+          <Trans i18nKey={`${i18nKeyBase}.part1`} components={[<strong />]} />
           <br />
-          Now click on the <strong>Pair Wallet</strong> button under the{" "}
-          <strong>Status</strong> tab. Enter your password when prompted. <br />
-          Select the dropdown menu and choose a pairing option. Depending on
-          your setup you can either use the{" "}
-          <strong>Lightning (REST + Local IP)</strong> connection or the{" "}
-          <b>Lightning (REST + Tor)</b> connection.
+          <Trans
+            i18nKey={`${i18nKeyBase}.part2`}
+            components={[<strong />]}
+          />{" "}
+          <br />
+          {t("page_description.part3")}
+          <Trans
+            i18nKey={`${i18nKeyBase}.part4`}
+            components={[<strong />, <b />]}
+          />
         </p>
       }
       submitLoading={loading}
@@ -111,8 +129,8 @@ export default function ConnectMyNode() {
     >
       <TextField
         id="lndconnect"
-        label="lndconnect REST URL"
-        placeholder="lndconnect://yournode:8080?..."
+        label={t("url_label")}
+        placeholder={t("url_placeholder")}
         onChange={handleLndconnectUrl}
         required
       />

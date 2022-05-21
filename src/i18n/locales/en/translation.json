@@ -167,14 +167,23 @@
     "mynode": {
       "title": "myNode",
       "description": "Connect to your myNode",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_title": "Connect to your myNode",
+      "page_description": {
+        "part1": "On your myNode homepage click on the <0>Wallet</0> button for your <0>Lightning</0> service.",
+        "part2": "Now click on the <0>Pair Wallet</0> button under the <0>Status</0> tab. Enter your password when prompted.",
+        "part3": "Select the dropdown menu and choose a pairing option.",
+        "part4": " Depending on your setup you can either use the <0>Lightning (REST + Local IP)</0> connection or the <1>Lightning (REST + Tor)</1> connection."
+      },
+      "url_label": "lndconnect REST URL",
+      "url_placeholder": "lndconnect://yournode:8080?...",
+      "errors": {
+        "connection_failed": "Connection failed. Are your credentials correct?"
+      }
     },
     "start9": {
       "title": "Start9",
       "description": "Connect to your Embassy",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_description": {}
     },
     "raspiblitz": {
       "title": "RaspiBlitz",
