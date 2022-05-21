@@ -199,8 +199,29 @@
     "raspiblitz": {
       "title": "RaspiBlitz",
       "description": "Connect to your RaspiBlitz",
-      "pre_connect": {},
-      "post_connect": {}
+      "page_title": "Connect to your RaspiBlitz node",
+      "page_description": {
+        "rest_api": {
+          "part1": "You need your node onion address, port, and a macaroon with read and send permissions (e.g. admin.macaroon).",
+          "part2": "<0>SSH</0> into your <0>RaspiBlitz</0>.",
+          "part3": "Run the command <0>sudo cat /mnt/hdd/tor/lndrest8080/hostname</0>.",
+          "part4": "Copy and paste the <0>.onion</0> address in the input below.",
+          "part5": "Add your <0>port</0> after the onion address, the default port is <0>:8080</0>."
+        },
+        "macaroon": {
+          "part1": "Select <0>CONNECT</0>.",
+          "part2": "Select <0>EXPORT</0>.",
+          "part3": "Select <0>HEX</0>.",
+          "part4": "Copy the <0>adminMacaroon</0>.",
+          "part5": "Paste the macaroon in the input below."
+        }
+      },
+      "rest_host_label": "REST API host",
+      "rest_host_placeholder": "your-node-onion-address:port",
+      "macaroon_label": "Macaroon (HEX format)",
+      "errors": {
+        "connection_failed": "Connection failed. Are your RaspiBlitz credentials correct?"
+      }
     },
     "bitcoin_beach": {
       "title": "Bitcoin Beach Wallet",

@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 import utils from "~/common/lib/utils";
 import TextField from "@components/form/TextField";
 import CompanionDownloadInfo from "@components/CompanionDownloadInfo";
@@ -10,8 +12,13 @@ const initialFormData = Object.freeze({
   macaroon: "",
 });
 
+const descriptionKeyPrefix = "choose_connector.raspiblitz.page_description";
+
 export default function ConnectRaspiBlitz() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "choose_connector.raspiblitz",
+  });
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
 
@@ -73,12 +80,11 @@ export default function ConnectRaspiBlitz() {
         }
       } else {
         alert(`
-          Connection failed. Are your RaspiBlitz credentials correct? \n\n(${validation.error})`);
+          ${t("errors.connection_failed")} \n\n(${validation.error})`);
       }
     } catch (e) {
       console.error(e);
-      let message =
-        "Connection failed. Are your RaspiBlitz credentials correct?";
+      let message = t("errors.connection_failed");
       if (e instanceof Error) {
         message += `\n\n${e.message}`;
       }
@@ -89,21 +95,31 @@ export default function ConnectRaspiBlitz() {
 
   return (
     <ConnectorForm
-      title="Connect to your RaspiBlitz node"
+      title={t("page_title")}
       description={
         <p>
-          You need your node onion address, port, and a macaroon with read and
-          send permissions (e.g. admin.macaroon).
+          {t("page_description.rest_api.part1")}
           <br />
           <br />
-          <strong>SSH</strong> into your <strong>RaspiBlitz</strong>.<br />
-          Run the command{" "}
-          <strong>sudo cat /mnt/hdd/tor/lndrest8080/hostname</strong>.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.rest_api.part2`}
+            components={[<strong />]}
+          />
           <br />
-          Copy and paste the <strong>.onion</strong> address in the input below.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.rest_api.part3`}
+            components={[<strong />]}
+          />
           <br />
-          Add your <strong>port</strong> after the onion address, the default
-          port is <strong>:8080</strong>.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.rest_api.part4`}
+            components={[<strong />]}
+          />
+          <br />
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.rest_api.part5`}
+            components={[<strong />]}
+          />
         </p>
       }
       submitLoading={loading}
@@ -114,8 +130,8 @@ export default function ConnectRaspiBlitz() {
       <div className="mt-6">
         <TextField
           id="url"
-          label="REST API host"
-          placeholder="your-node-onion-address:port"
+          label={t("rest_host_label")}
+          placeholder={t("rest_host_placeholder")}
           onChange={handleUrl}
           required
         />
@@ -123,16 +139,32 @@ export default function ConnectRaspiBlitz() {
       {formData.url.match(/\.onion/i) && <CompanionDownloadInfo />}
       <div className="mt-6">
         <p className="mb-6 text-gray-500 mt-6 dark:text-gray-400">
-          Select <b>CONNECT</b>.<br />
-          Select <b>EXPORT</b>.<br />
-          Select <b>HEX</b>.<br />
-          Copy the <b>adminMacaroon</b>.<br />
-          Paste the macaroon in the input below.
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.macaroon.part1`}
+            components={[<b />]}
+          />{" "}
+          <br />
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.macaroon.part2`}
+            components={[<b />]}
+          />
+          <br />
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.macaroon.part3`}
+            components={[<b />]}
+          />
+          <br />
+          <Trans
+            i18nKey={`${descriptionKeyPrefix}.macaroon.part4`}
+            components={[<b />]}
+          />
+          <br />
+          {t("page_description.macaroon.part5")}
         </p>
         <div>
           <TextField
             id="macaroon"
-            label="Macaroon (HEX format)"
+            label={t("macaroon_label")}
             value={formData.macaroon}
             onChange={handleMacaroon}
             required
