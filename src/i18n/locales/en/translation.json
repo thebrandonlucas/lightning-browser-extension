@@ -336,6 +336,25 @@
     "email": "Email",
     "email_placeholder": "Enter your email address"
   },
+  "lnurl_pay": {
+    "send_payment_label": "Send payment to",
+    "description_label": "Description",
+    "amount_label": "Amount (Satoshi)",
+    "comment_label": "Comment",
+    "name_label": "Name",
+    "email_label": "Email",
+    "loading": "loading...",
+    "payment_send_success": "Success, payment sent!",
+    "metadata": {
+      "description": "Description",
+      "full_description": "Full Description",
+      "url": "Url"
+    },
+    "errors": {
+      "payment_aborted": "Payment aborted: Could not fetch invoice.",
+      "not_implemented": "Not implemented yet. Please submit an issue to support success action:"
+    }
+  },
   "components": {
     "qrcode_scanner": {
       "scan_qrcode": "Scan QR Code",

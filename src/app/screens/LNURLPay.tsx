@@ -1,6 +1,7 @@
 import React, { useState, useEffect, MouseEvent } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   LNURLPaymentInfoError,
@@ -45,6 +46,8 @@ const Dd = ({ children }: { children: React.ReactNode }) => (
 function LNURLPay(props: Props) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "lnurl_pay" });
+  const { t: tCommon } = useTranslation("common");
   const auth = useAuth();
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState(props.details);
@@ -153,7 +156,7 @@ function LNURLPay(props: Props) {
         }
       } catch (e) {
         const message = e instanceof Error ? `(${e.message})` : "";
-        alert(`Payment aborted: Could not fetch invoice. ${message}`);
+        alert(`${t("errors.payment_aborted")} ${message}`);
         return;
       }
 
@@ -167,7 +170,7 @@ function LNURLPay(props: Props) {
         payerdata,
       });
       if (!isValidInvoice) {
-        alert("Payment aborted: Invalid invoice.");
+        alert(t("errors.payment_aborted"));
         return;
       }
 
@@ -195,12 +198,15 @@ function LNURLPay(props: Props) {
           case "aes": // TODO: For aes, LN WALLET must attempt to decrypt a ciphertext with payment preimage
           default:
             alert(
-              `Not implemented yet. Please submit an issue to support success action: ${paymentInfo.successAction.tag}`
+              `${t("errors.not_implemented")} ${paymentInfo.successAction.tag}`
             );
             break;
         }
       } else {
-        setSuccessAction({ tag: "message", message: "Success, payment sent!" });
+        setSuccessAction({
+          tag: "message",
+          message: t("payment_send_success"),
+        });
       }
 
       auth.fetchAccountInfo(); // Update balance.
@@ -213,7 +219,11 @@ function LNURLPay(props: Props) {
     } catch (e) {
       console.error(e);
       if (e instanceof Error) {
-        alert(`Error: ${e.message}`);
+        alert(
+          `${tCommon("errors.error")}${tCommon("punctuation.colon")} ${
+            e.message
+          }`
+        );
       }
     } finally {
       setLoadingConfirm(false);
@@ -260,9 +270,12 @@ function LNURLPay(props: Props) {
       return metadata
         .map(([type, content]: [string, string]) => {
           if (type === "text/plain") {
-            return ["Description", content];
+            return [t("metadata.description"), content];
           } else if (type === "text/long-desc") {
-            return ["Full Description", <p key={type}>{content}</p>];
+            return [
+              t("metadata.full_description"),
+              <p key={type}>{content}</p>,
+            ];
           }
           return undefined;
         })
@@ -278,9 +291,9 @@ function LNURLPay(props: Props) {
     let descriptionList: [string, string | React.ReactNode][] = [];
     if (successAction.tag === "url") {
       descriptionList = [
-        ["Description", successAction.description],
+        [t("metadata.description"), successAction.description],
         [
-          "Url",
+          t("metadata.url"),
           <>
             {successAction.url}
             <div className="mt-4">
@@ -288,7 +301,7 @@ function LNURLPay(props: Props) {
                 onClick={() => {
                   if (successAction.url) utils.openUrl(successAction.url);
                 }}
-                label="Open"
+                label={tCommon("actions.open")}
                 primary
               />
             </div>
@@ -296,7 +309,7 @@ function LNURLPay(props: Props) {
         ],
       ];
     } else if (successAction.tag === "message") {
-      descriptionList = [["Message", successAction.message]];
+      descriptionList = [[tCommon("message"), successAction.message]];
     }
 
     return (
@@ -311,7 +324,7 @@ function LNURLPay(props: Props) {
         </dl>
         <div className="text-center">
           <button className="underline text-sm text-gray-500" onClick={close}>
-            Close
+            {tCommon("actions.close")}
           </button>
         </div>
       </>
@@ -332,16 +345,16 @@ function LNURLPay(props: Props) {
               <dl>
                 {loading || !details ? (
                   <>
-                    <Dt>Send payment to</Dt>
-                    <Dd>loading...</Dd>
-                    <Dt>Description</Dt>
-                    <Dd>loading...</Dd>
-                    <Dt>Amount (Satoshi)</Dt>
-                    <Dd>loading...</Dd>
+                    <Dt>{t("send_payment_label")}</Dt>
+                    <Dd>{t("loading")}</Dd>
+                    <Dt>{t("description_label")}</Dt>
+                    <Dd>{t("loading")}</Dd>
+                    <Dt>{t("amount_label")}</Dt>
+                    <Dd>{t("loading")}</Dd>
                   </>
                 ) : (
                   <>
-                    <Dt>Send payment to</Dt>
+                    <Dt>{t("send_payment_label")}</Dt>
                     <Dd>{getRecipient()}</Dd>
                     {formattedMetadata(details.metadata).map(([dt, dd]) => (
                       <>
@@ -351,7 +364,7 @@ function LNURLPay(props: Props) {
                     ))}
                     {details.minSendable === details.maxSendable && (
                       <>
-                        <Dt>Amount (Satoshi)</Dt>
+                        <Dt>{t("amount_label")}</Dt>
                         <Dd>{`${+details.minSendable / 1000} sat`}</Dd>
                       </>
                     )}
@@ -362,7 +375,7 @@ function LNURLPay(props: Props) {
                 <div>
                   <TextField
                     id="amount"
-                    label="Amount (Satoshi)"
+                    label={t("amount_label")}
                     type="number"
                     min={+details.minSendable / 1000}
                     max={+details.maxSendable / 1000}
@@ -378,7 +391,7 @@ function LNURLPay(props: Props) {
                   <div className="mt-4">
                     <TextField
                       id="comment"
-                      label="Comment"
+                      label={t("comment_label")}
                       placeholder="optional"
                       onChange={(e) => {
                         setComment(e.target.value);
@@ -390,7 +403,7 @@ function LNURLPay(props: Props) {
                 <div className="mt-4">
                   <TextField
                     id="name"
-                    label="Name"
+                    label={t("name_label")}
                     placeholder="optional"
                     value={userName}
                     onChange={(e) => {
@@ -403,7 +416,7 @@ function LNURLPay(props: Props) {
                 <div className="mt-4">
                   <TextField
                     id="email"
-                    label="Email"
+                    label={t("email_label")}
                     placeholder="optional"
                     value={userEmail}
                     onChange={(e) => {

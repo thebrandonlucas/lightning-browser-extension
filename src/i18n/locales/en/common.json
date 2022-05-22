@@ -1,6 +1,14 @@
 {
+  "message": "Message",
   "password": "Password",
   "punctuation": {
     "colon": ":"
+  },
+  "actions": {
+    "open": "Open",
+    "close": "Close"
+  },
+  "errors": {
+    "error": "Error:"
   }
 }
