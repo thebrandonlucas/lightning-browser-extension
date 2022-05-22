@@ -280,6 +280,30 @@
       "next": "Next"
     }
   },
+  "send": {
+    "send": "Send",
+    "lightning_invoice": "Lightning Invoice",
+    "paste_invoice": "Paste invoice, lnurl or lightning address",
+    "waiting_to_scan_invoice": "Waiting to scan invoice",
+    "actions": {
+      "continue": "Continue"
+    }
+  },
+  "receive": {
+    "payment_received": "Payment received!",
+    "waiting_for_payment": "waiting for payment...",
+    "copied": "Copied!",
+    "receive": "Receive",
+    "amount_label": "Amount",
+    "amount_placeholder": "Amount in Satoshi...",
+    "description_label": "Description",
+    "description_placeholder": "For e.g. who is sending this payment?",
+    "actions": {
+      "copy": "Copy",
+      "check_payment_status": "Check payment status",
+      "create_invoice": "Create Invoice"
+    }
+  },
   "components": {
     "qrcode_scanner": {
       "scan_qrcode": "Scan QR Code",

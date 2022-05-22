@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   CaretLeftIcon,
   CheckIcon,
@@ -23,6 +24,7 @@ import Loading from "@components/Loading";
 function Receive() {
   const auth = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "receive" });
   const [formData, setFormData] = useState({
     amount: "",
     description: "",
@@ -97,7 +99,7 @@ function Receive() {
                 <div className="inline-block bg-green-bitcoin p-1 rounded-full mb-2">
                   <CheckIcon className="w-7 h-7 text-white" />
                 </div>
-                <p className="text-lg font-bold">Payment received!</p>
+                <p className="text-lg font-bold">{t("payment_received")}</p>
               </div>
             </div>
           )}
@@ -109,9 +111,9 @@ function Receive() {
                 onClick={async () => {
                   try {
                     navigator.clipboard.writeText(invoice.paymentRequest);
-                    setCopyLabel("Copied!");
+                    setCopyLabel(t("copied"));
                     setTimeout(() => {
-                      setCopyLabel("Copy");
+                      setCopyLabel(t("actions.copy"));
                     }, 1000);
                   } catch (e) {
                     if (e instanceof Error) {
@@ -127,13 +129,13 @@ function Receive() {
               {pollingForPayment && (
                 <div className="flex items-center space-x-2 dark:text-white">
                   <Loading />
-                  <span>waiting for payment...</span>
+                  <span>{t("waiting_for_payment")}</span>
                 </div>
               )}
               {!pollingForPayment && (
                 <Button
                   onClick={() => checkPayment(invoice.rHash)}
-                  label="Check payment status"
+                  label={t("check_payment_status")}
                 />
               )}
             </div>
@@ -157,7 +159,7 @@ function Receive() {
   return (
     <div>
       <Header
-        title="Receive"
+        title={t("receive")}
         headerLeft={
           <IconButton
             onClick={() => navigate("/")}
@@ -177,8 +179,8 @@ function Receive() {
             <div className="mb-4">
               <TextField
                 id="amount"
-                label="Amount"
-                placeholder="Amount in Satoshi..."
+                label={t("amount_label")}
+                placeholder={t("amount_placeholder")}
                 type="number"
                 onChange={handleChange}
               />
@@ -187,8 +189,8 @@ function Receive() {
             <div className="mb-4">
               <TextField
                 id="description"
-                label="Description"
-                placeholder="For e.g. who is sending this payment?"
+                label={t("description_label")}
+                placeholder={t("description_placeholder")}
                 onChange={handleChange}
               />
             </div>
@@ -221,7 +223,7 @@ function Receive() {
               <div className="mb-4">
                 <Button
                   onClick={createInvoice}
-                  label="Create Invoice"
+                  label={t("actions.create_invoice")}
                   fullWidth
                   primary
                   loading={loading}

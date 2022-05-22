@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   CaretLeftIcon,
   CrossIcon,
@@ -18,6 +19,7 @@ import TextField from "@components/form/TextField";
 function Send() {
   const [invoice, setInvoice] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "send" });
   const [qrIsOpen, setQrIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -68,7 +70,7 @@ function Send() {
     return (
       <div>
         <Header
-          title="Waiting to scan invoice"
+          title={t("waiting_to_scan_invoice")}
           headerRight={
             <IconButton
               onClick={() => setQrIsOpen(false)}
@@ -95,7 +97,7 @@ function Send() {
   return (
     <div>
       <Header
-        title="Send"
+        title={t("send")}
         headerLeft={
           <IconButton
             onClick={() => navigate("/")}
@@ -106,8 +108,8 @@ function Send() {
       <form className="p-4 max-w-screen-sm mx-auto" onSubmit={handleSubmit}>
         <TextField
           id="invoice"
-          label="Lightning Invoice"
-          placeholder="Paste invoice, lnurl or lightning address"
+          label={t("lightning_invoice")}
+          placeholder={t("paste_invoice")}
           value={invoice}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setInvoice(event.target.value)
@@ -125,7 +127,7 @@ function Send() {
         <div className="mt-4">
           <Button
             type="submit"
-            label="Continue"
+            label={t("actions.continue")}
             primary
             fullWidth
             loading={loading}
