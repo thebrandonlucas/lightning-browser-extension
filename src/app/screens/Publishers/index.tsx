@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import Container from "@components/Container";
 import PublishersTable from "@components/PublishersTable";
@@ -11,6 +12,7 @@ import websites from "./websites.json";
 function Publishers() {
   const [data, setData] = useState<Allowance[]>([]);
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "publishers" });
 
   function navigateToPublisher(id: string) {
     navigate(`/publishers/${id}`);
@@ -26,7 +28,7 @@ function Publishers() {
           return {
             ...allowance,
             badge: {
-              label: "ACTIVE",
+              label: t("active"),
               color: "green-bitcoin",
               textColor: "white",
             },
@@ -42,15 +44,16 @@ function Publishers() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
       <h2 className="mt-12 mb-2 text-2xl font-bold dark:text-white">
-        Your ⚡️ Websites
+        {t("your_websites_title")}
       </h2>
       <p className="mb-6 text-gray-700 dark:text-gray-500">
-        Websites where you have used Alby before
+        {t("your_websites_description")}
       </p>
       {data.length > 0 ? (
         <PublishersTable
@@ -58,13 +61,13 @@ function Publishers() {
           navigateToPublisher={navigateToPublisher}
         />
       ) : (
-        <p className="dark:text-white">No websites yet.</p>
+        <p className="dark:text-white">{t("no_websites_yet")}</p>
       )}
       <h2 className="mt-12 mb-2 text-2xl font-bold dark:text-white">
-        Other ⚡️ Websites
+        {t("other_websites_title")}
       </h2>
       <p className="mb-6 text-gray-700 dark:text-gray-500">
-        Websites where you can use Alby
+        {t("other_websites_description")}
       </p>
       <div className="mb-12">
         {websites.map(({ title, items }) => (

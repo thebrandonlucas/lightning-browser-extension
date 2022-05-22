@@ -304,6 +304,38 @@
       "create_invoice": "Create Invoice"
     }
   },
+  "publishers": {
+    "your_websites_title": "Your ⚡️ Websites",
+    "your_websites_description": "Websites where you have used Alby before",
+    "no_websites_yet": "No websites yet.",
+    "other_websites_title": "Other ⚡️ Websites",
+    "other_websites_description": "Websites where you can use Alby",
+    "active": "ACTIVE"
+  },
+  "settings": {
+    "title": "Settings",
+    "website_enhancements": "Website enhancements",
+    "website_enhancements_description": "Tipping enhancements for Twitter, YouTube, etc.",
+    "legacy_signing": "Legacy signing for LNDhub and LNBits",
+    "legacy_signing_description": "Message signing and login with LNDhub and LNbits accounts has been changed. If you logged in with these accounts you can still enable the old signing method. This option will be removed later, make sure to switch to the new login.",
+    "camera_access": "Camera access",
+    "camera_access_description": "For scanning QR codes",
+    "allow_camera_access": "Allow camera access",
+    "permission_granted": "Permission granted",
+    "language": "Language",
+    "language_description": "Alby goes international! help us translate Alby in your language",
+    "theme": "Theme",
+    "theme_description": "Change the app theme to dark or light",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "personal_data": "Personal data",
+    "personal_data_description": "Payees can request for additional data to be sent with a payment. This  data is not shared with anyone without your consent, you will always be prompted before this data is sent along with a payment.",
+    "name": "Name",
+    "name_placeholder": "Enter your name",
+    "email": "Email",
+    "email_placeholder": "Enter your email address"
+  },
   "components": {
     "qrcode_scanner": {
       "scan_qrcode": "Scan QR Code",
