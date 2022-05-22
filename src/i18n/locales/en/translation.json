@@ -60,10 +60,8 @@
         "host_wallet": "We host a Lightning wallet for you!",
         "email_label": "Email Address",
         "optional_lightning_note": {
-          "part1": "Your Alby account also comes with an optional",
-          "part2": "Lightning Address",
-          "part3": ". This is a simple way for anyone to send you Bitcoin on the Lightning Network.",
-          "part4": "learn more"
+          "part1": "Your Alby account also comes with an optional <0>Lightning Address</0>. ",
+          "part2": "This is a simple way for anyone to send you Bitcoin on the Lightning Network. <0>(learn more)</0>"
         },
         "optional_lightning_address_label": "Choose your Lightning Address (optional)",
         "optional_lightning_address_suffix": "@getalby.com",
@@ -92,10 +90,7 @@
       "url_placeholder": "https://your-node-url:8080",
       "macaroon_label": "Macaroon (HEX format)",
       "or": "OR",
-      "drag_and_drop": {
-        "part1": "Drag and drop your macaroon here or",
-        "part2": "browse"
-      },
+      "drag_and_drop": "Drag and drop your macaroon here or browse",
       "errors": {
         "connection_failed": "Connection failed. Are your LND credentials correct?"
       }

@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-key */
 import { SendIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -174,8 +175,11 @@ export default function ConnectLnd() {
         >
           <SendIcon className="mb-3 h-6 w-6 text-blue-500" />
           <p className="dark:text-white">
-            {t("drag_and_drop.part1")}{" "}
-            <span className="underline">{t("drag_and_drop.part2")}</span>
+            <Trans
+              i18nKey={"drag_and_drop"}
+              t={t}
+              components={[<span className="underline" />]}
+            />
           </p>
           <input
             ref={hiddenFileInput}

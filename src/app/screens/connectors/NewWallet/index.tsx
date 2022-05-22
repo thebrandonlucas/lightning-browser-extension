@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 
 import utils from "~/common/lib/utils";
@@ -200,25 +201,30 @@ export default function NewWallet() {
           </div>
           <div className="mt-6">
             <p className="mb-2 text-gray-700 dark:text-gray-400">
-              {t("pre_connect.optional_lightning_note.part1")}{" "}
-              <a
-                className="underline"
-                href="https://lightningaddress.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("pre_connect.optional_lightning_note.part2")}
-              </a>
-              {t("pre_connect.optional_lightning_note.part3")} (
-              <a
-                className="underline"
-                href="https://lightningaddress.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("pre_connect.optional_lightning_note.part4")}
-              </a>
-              )
+              <Trans
+                i18nKey={"pre_connect.optional_lightning_note.part1"}
+                t={t}
+                components={[
+                  <a
+                    className="underline"
+                    href="https://lightningaddress.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  />,
+                ]}
+              />
+              <Trans
+                i18nKey={"pre_connect.optional_lightning_note.part2"}
+                t={t}
+                components={[
+                  <a
+                    className="underline"
+                    href="https://lightningaddress.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  />,
+                ]}
+              />
             </p>
             <div>
               <TextField
