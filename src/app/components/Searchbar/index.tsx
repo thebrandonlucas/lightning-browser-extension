@@ -1,10 +1,12 @@
 import { SearchIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
+import { useTranslation } from "react-i18next";
 
 export default function Searchbar() {
+  const { t: tCommon } = useTranslation("common");
   return (
     <div className="w-full">
       <label htmlFor="search" className="sr-only">
-        Search
+        {tCommon("actions.search")}
       </label>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">

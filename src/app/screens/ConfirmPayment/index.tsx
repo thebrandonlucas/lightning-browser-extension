@@ -59,7 +59,7 @@ function ConfirmPayment(props: Props) {
       setSuccessMessage(tCommon("payment_send_success"));
     } catch (e) {
       console.error(e);
-      if (e instanceof Error) alert(`Error: ${e.message}`);
+      if (e instanceof Error) alert(`${tCommon("errors.error")} ${e.message}`);
     } finally {
       setLoading(false);
     }

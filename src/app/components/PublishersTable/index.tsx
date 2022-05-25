@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-key */
 import { CaretRightIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
+import { Trans, useTranslation } from "react-i18next";
 
 import Badge from "../Badge";
 import Progressbar from "../Progressbar";
@@ -32,6 +34,9 @@ export default function PublishersTable({
   publishers,
   navigateToPublisher,
 }: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.publishers_table",
+  });
   return (
     <div className="shadow overflow-hidden rounded-lg">
       <table className="min-w-full">
@@ -70,9 +75,23 @@ export default function PublishersTable({
                       )}
                     </div>
                     <div className="text-sm text-gray-700 dark:text-gray-400">
-                      {publisher.host} • {publisher.paymentsCount} payments{" "}
+                      <Trans
+                        i18nKey={"payments.part1"}
+                        t={t}
+                        values={{
+                          host: publisher.host,
+                          paymentsCount: publisher.paymentsCount,
+                        }}
+                      />{" "}
                       {publisher.paymentsAmount > 0 && (
-                        <span>({publisher.paymentsAmount} sats)</span>
+                        <Trans
+                          i18nKey={"payments.part2"}
+                          t={t}
+                          values={{
+                            paymentsAmount: publisher.paymentsAmount,
+                          }}
+                          components={[<span />]}
+                        />
                       )}
                     </div>
                   </div>
@@ -82,7 +101,14 @@ export default function PublishersTable({
                 {publisher.totalBudget > 0 && (
                   <div className="ml-40">
                     <p className="text-lg text-gray-700 mb-0 dark:text-gray-400">
-                      {publisher.usedBudget} / {publisher.totalBudget} sat used
+                      <Trans
+                        i18nKey={"budget"}
+                        t={t}
+                        values={{
+                          usedBudget: publisher.usedBudget,
+                          totalBudget: publisher.totalBudget,
+                        }}
+                      />
                     </p>
                     <div className="relative mt-2 ml-auto">
                       <div className="flex items-center justify-end">

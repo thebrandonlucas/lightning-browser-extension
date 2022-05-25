@@ -23,7 +23,8 @@
     "delete": "Delete",
     "save": "Save",
     "send": "Send",
-    "receive": "Receive"
+    "receive": "Receive",
+    "search": "Search"
   },
   "errors": {
     "error": "Error:",

@@ -380,6 +380,13 @@
     "settings": "Settings"
   },
   "components": {
+    "publishers_table": {
+      "payments": {
+        "part1": "{{host}} • {{paymentsCount}} payments",
+        "part2": "<0>({paymentsAmount} sats)</0>"
+      },
+      "budget": "{{usedBudget}} / {{totalBudget}} sat used"
+    },
     "qrcode_scanner": {
       "scan_qrcode": "Scan QR Code",
       "start_scanning": "Start scanning",
