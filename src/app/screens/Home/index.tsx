@@ -30,6 +30,7 @@ function Home() {
   const [lnData, setLnData] = useState<Battery[]>([]);
   const navigate = useNavigate();
   const { t } = useTranslation("translation", { keyPrefix: "home" });
+  const { t: tCommon } = useTranslation("common");
 
   async function loadAllowance() {
     try {
@@ -222,7 +223,7 @@ function Home() {
           <Button
             fullWidth
             icon={<SendIcon className="w-6 h-6" />}
-            label={t("default_view.send")}
+            label={tCommon("actions.send")}
             direction="column"
             onClick={() => {
               navigate("/send");
@@ -231,7 +232,7 @@ function Home() {
           <Button
             fullWidth
             icon={<ReceiveIcon className="w-6 h-6" />}
-            label={t("default_view.receive")}
+            label={tCommon("actions.receive")}
             direction="column"
             onClick={() => {
               navigate("/receive");

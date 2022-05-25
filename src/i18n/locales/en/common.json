@@ -9,6 +9,8 @@
   "send_payment_to": "Send payment to",
   "success": "Success!",
   "payment_send_success": "Success, payment sent!",
+  "sat_used": "sat used",
+  "sat": "sat",
   "actions": {
     "open": "Open",
     "close": "Close",
@@ -19,9 +21,12 @@
     "enable": "Enable",
     "edit": "Edit",
     "delete": "Delete",
-    "save": "Save"
+    "save": "Save",
+    "send": "Send",
+    "receive": "Receive"
   },
   "errors": {
-    "error": "Error:"
+    "error": "Error:",
+    "unexpected_error": "An unexpected error occurred ({{message}})"
   }
 }

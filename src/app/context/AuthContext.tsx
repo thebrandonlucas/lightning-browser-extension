@@ -3,6 +3,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import utils from "../../common/lib/utils";
 import api from "../../common/lib/api";
 import type { AccountInfo } from "../../types";
+import { useTranslation, Trans } from "react-i18next";
 
 interface AuthContextType {
   account: {
@@ -29,6 +30,7 @@ const AuthContext = createContext({} as AuthContextType);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [account, setAccount] = useState<AuthContextType["account"]>(null);
   const [loading, setLoading] = useState(true);
+  const { t: tCommon } = useTranslation("common");
 
   const unlock = (password: string, callback: VoidFunction) => {
     return api.unlock(password).then((response) => {
@@ -76,7 +78,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       })
       .catch((e) => {
-        alert(`An unexpected error occurred (${e.message})`);
+        alert(
+          <Trans
+            i18nKey={"errors.unexpected_error"}
+            t={tCommon}
+            values={{ message: e.message }}
+          />
+        );
       })
       .finally(() => {
         setLoading(false);

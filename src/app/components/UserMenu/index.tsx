@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   GearIcon,
   LockIcon,
@@ -15,6 +16,10 @@ import Menu from "../Menu";
 
 export default function UserMenu() {
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.user_menu",
+  });
+  const { t: tCommon } = useTranslation("common");
   const auth = useAuth();
 
   function openOptions(path: string) {
@@ -50,7 +55,7 @@ export default function UserMenu() {
           }}
         >
           <TransactionsIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-          Websites
+          {t("websites")}
         </Menu.ItemButton>
         <Menu.ItemButton
           onClick={() => {
@@ -58,7 +63,7 @@ export default function UserMenu() {
           }}
         >
           <SendIcon className="w-6 h-6 -ml-0.5 mr-2 text-gray-700 dark:text-gray-300" />
-          Send
+          {tCommon("actions.send")}
         </Menu.ItemButton>
         <Menu.ItemButton
           onClick={() => {
@@ -66,7 +71,7 @@ export default function UserMenu() {
           }}
         >
           <ReceiveIcon className="w-6 h-6 -ml-0.5 mr-2 text-gray-700 dark:text-gray-300" />
-          Receive
+          {tCommon("actions.receive")}
         </Menu.ItemButton>
         <Menu.ItemButton
           onClick={() => {
@@ -74,7 +79,7 @@ export default function UserMenu() {
           }}
         >
           <GearIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-          Settings
+          {t("settings")}
         </Menu.ItemButton>
         <Menu.ItemButton
           onClick={() => {
@@ -82,12 +87,12 @@ export default function UserMenu() {
           }}
         >
           <QuestionIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-          Feedback
+          {t("feedback")}
         </Menu.ItemButton>
         <Menu.Divider />
         <Menu.ItemButton onClick={lock}>
           <LockIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-          Lock
+          {t("lock")}
         </Menu.ItemButton>
       </Menu.List>
     </Menu>

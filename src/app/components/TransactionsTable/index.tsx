@@ -4,6 +4,7 @@ import {
   CaretDownIcon,
 } from "@bitcoin-design/bitcoin-icons-react/filled";
 import { Disclosure } from "@headlessui/react";
+import { useTranslation, Trans } from "react-i18next";
 
 import { Transaction } from "~/types";
 
@@ -14,6 +15,10 @@ type Props = {
 };
 
 export default function TransactionsTable({ transactions }: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.transactions_table",
+  });
+  const { t: tCommon } = useTranslation("common");
   function renderIcon(type: string) {
     function getIcon() {
       const iconClasses = "h-3 w-3";
@@ -71,7 +76,7 @@ export default function TransactionsTable({ transactions }: Props) {
                           {[tx.type && "sent", "sending"].includes(tx.type)
                             ? "-"
                             : "+"}
-                          {tx.totalAmount} sat
+                          {tx.totalAmount} {tCommon("sat")}
                         </p>
                         <p className="text-xs text-gray-600">{tx.date}</p>
                       </div>
@@ -85,9 +90,21 @@ export default function TransactionsTable({ transactions }: Props) {
                   <Disclosure.Panel>
                     <div className="mt-1 ml-9 text-xs text-gray-600 dark:text-gray-400">
                       {tx.description}
-                      <p>Fee: {tx.totalFees} sat</p>
+                      <p>
+                        <Trans
+                          i18nKey={"fee"}
+                          t={t}
+                          values={{ fees: tx.totalFees }}
+                        />
+                      </p>
                       {tx.preimage && (
-                        <p className="truncate">Preimage: {tx.preimage}</p>
+                        <p className="truncate">
+                          <Trans
+                            i18nKey={"preimage"}
+                            t={t}
+                            values={{ preimage: tx.preimage }}
+                          />
+                        </p>
                       )}
                       {tx.location ? (
                         <a href={tx.location} target="_blank" rel="noreferrer">

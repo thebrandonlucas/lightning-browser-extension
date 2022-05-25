@@ -257,8 +257,6 @@
       }
     },
     "default_view": {
-      "send": "Send",
-      "receive": "Receive",
       "no_transactions": "No transactions yet."
     }
   },
@@ -379,8 +377,6 @@
   "options": {
     "add_lightning_account": "Add a new lightning account",
     "websites": "Websites",
-    "send": "Send",
-    "receive": "Receive",
     "settings": "Settings"
   },
   "components": {
@@ -388,6 +384,20 @@
       "scan_qrcode": "Scan QR Code",
       "start_scanning": "Start scanning",
       "stop_scanning": "Stop scanning"
+    },
+    "transactions_table": {
+      "fee": "Fee: {{fees}} sat",
+      "preimage": "Preimage: {{preimage}}"
+    },
+    "user_menu": {
+      "websites": "Websites",
+      "settings": "Settings",
+      "feedback": "Feedback",
+      "lock": "Lock"
+    },
+    "companion_download_info": {
+      "connect_behind_tor": "You are trying to connect to a node behind Tor. Because browsers cannot directly connect to your node please make sure you have the Alby companion app installed.",
+      "download_alby_companion": "Download it <0>it here <1 />.</0>"
     }
   }
 }

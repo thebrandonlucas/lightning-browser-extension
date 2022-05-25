@@ -91,6 +91,7 @@ function Options() {
 const Layout = () => {
   const auth = useAuth();
   const { t } = useTranslation("translation", { keyPrefix: "options" });
+  const { t: tCommon } = useTranslation("common");
 
   return (
     <div>
@@ -107,8 +108,8 @@ const Layout = () => {
         }
       >
         <Navbar.Link href="/publishers">{t("websites")}</Navbar.Link>
-        <Navbar.Link href="/send">{t("send")}</Navbar.Link>
-        <Navbar.Link href="/receive">{t("receive")}</Navbar.Link>
+        <Navbar.Link href="/send">{tCommon("actions.send")}</Navbar.Link>
+        <Navbar.Link href="/receive">{tCommon("actions.receive")}</Navbar.Link>
         <Navbar.Link href="/settings">{t("settings")}</Navbar.Link>
       </Navbar>
 
