@@ -86,7 +86,7 @@ function LNURLWithdraw(props: Props) {
 
   return (
     <div>
-      <h1 className="py-2 font-bold text-lg text-center">Withdraw</h1>
+      <h1 className="py-2 font-bold text-lg text-center">{t("withdraw")}</h1>
       <PublisherCard title={origin.name} image={origin.icon} />
       <div className="p-4 max-w-screen-sm mx-auto">
         {!successMessage ? (

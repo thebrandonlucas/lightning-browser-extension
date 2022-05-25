@@ -344,7 +344,19 @@
     }
   },
   "lnurl_withdraw": {
-    "withdraw_request_success": "Withdraw request sent successfully."
+    "withdraw_request_success": "Withdraw request sent successfully.",
+    "withdraw": "Withdraw"
+  },
+  "lnurl_auth": {
+    "ask_login": "asks you to login to"
+  },
+  "make_invoice": {
+    "requests_invoice": "requests an invoice:",
+    "memo": "Memo",
+    "errors": {
+      "amount_less_than_minimum": "Amount is less than minimum",
+      "amount_exceeds_maximum": "Amount exceeds maximum"
+    }
   },
   "components": {
     "qrcode_scanner": {

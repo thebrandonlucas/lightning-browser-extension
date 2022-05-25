@@ -25,6 +25,7 @@ function Receive() {
   const auth = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation("translation", { keyPrefix: "receive" });
+  const { t: tCommon } = useTranslation("common");
   const [formData, setFormData] = useState({
     amount: "",
     description: "",
@@ -179,7 +180,7 @@ function Receive() {
             <div className="mb-4">
               <TextField
                 id="amount"
-                label={t("amount_label")}
+                label={tCommon("amount")}
                 placeholder={t("amount_placeholder")}
                 type="number"
                 onChange={handleChange}

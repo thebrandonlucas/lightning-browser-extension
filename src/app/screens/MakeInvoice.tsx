@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import ConfirmOrCancel from "@components/ConfirmOrCancel";
 import TextField from "@components/form/TextField";
@@ -36,6 +37,8 @@ function MakeInvoice({
   invoiceAttributes,
   origin,
 }: Props) {
+  const { t } = useTranslation("translation", { keyPrefix: "make_invoice" });
+  const { t: tCommon } = useTranslation("common");
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(invoiceAttributes.amount || "");
   const [memo, setMemo] = useState(invoiceAttributes.memo || "");
@@ -47,12 +50,12 @@ function MakeInvoice({
       invoiceAttributes.minimumAmount &&
       parseInt(amount) < invoiceAttributes.minimumAmount
     ) {
-      setError("Amount is less than minimum");
+      setError(t("errors.amount_less_than_minimum"));
     } else if (
       invoiceAttributes.maximumAmount &&
       parseInt(amount) > invoiceAttributes.maximumAmount
     ) {
-      setError("Amount exceeds maximum");
+      setError(t("errors.amount_exceeds_maximum"));
     }
     setValue(amount);
   }
@@ -90,14 +93,14 @@ function MakeInvoice({
         <div className="mb-8">
           <div className="mb-4">
             <p className="font-semibold text-gray-500 mb-4">
-              {origin.host} requests an invoice:
+              {origin.host} {t("requests_invoice")}
             </p>
             <div className="mt-4">
               {amountEditable && (
                 <>
                   <TextField
                     id="amount"
-                    label="Amount"
+                    label={tCommon("amount")}
                     type="number"
                     min={invoiceAttributes.minimumAmount}
                     max={invoiceAttributes.maximumAmount}
@@ -109,7 +112,7 @@ function MakeInvoice({
               )}
               {!amountEditable && (
                 <dl className="dark:bg-surface-02dp pt-4 overflow-hidden">
-                  <Dt>Amount</Dt>
+                  <Dt>{tCommon("amount")}</Dt>
                   <Dd>{invoiceAttributes.amount}</Dd>
                 </dl>
               )}
@@ -119,14 +122,14 @@ function MakeInvoice({
               {memoEditable && (
                 <TextField
                   id="memo"
-                  label="Memo"
+                  label={t("memo")}
                   value={memo}
                   onChange={handleMemoChange}
                 />
               )}
               {!memoEditable && (
                 <dl className="dark:bg-surface-02dp overflow-hidden">
-                  <Dt>Memo</Dt>
+                  <Dt>{t("memo")}</Dt>
                   <Dd>{invoiceAttributes.memo}</Dd>
                 </dl>
               )}

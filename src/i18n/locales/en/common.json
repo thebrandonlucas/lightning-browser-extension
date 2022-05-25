@@ -3,6 +3,7 @@
   "password": "Password",
   "name": "Name",
   "email": "Email",
+  "amount": "Amount",
   "amount_satoshi": "Amount (Satoshi)",
   "actions": {
     "open": "Open",
