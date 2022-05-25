@@ -129,7 +129,7 @@ export default function NewWallet() {
           ? t("pre_connect.title")
           : t("post_connect.title")
       }
-      submitLabel={t("actions.continue")}
+      submitLabel={tCommon("actions.continue")}
       submitLoading={loading}
       onSubmit={lndHubData.login ? next : signup}
       submitDisabled={password === "" || email === ""}

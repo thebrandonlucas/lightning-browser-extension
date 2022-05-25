@@ -43,7 +43,6 @@ export default function ConnectGaloy(props: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "choose_connector.galoy",
   });
-  const { t: tCommon } = useTranslation("common");
   const [loading, setLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [smsCode, setSmsCode] = useState<string | undefined>();
@@ -104,7 +103,7 @@ export default function ConnectGaloy(props: Props) {
           setAcceptJwtDirectly(true);
         } else {
           const alertMsg = `${t("errors.sms_code_request")}${
-            errMessage ? `${tCommon("punctuation.colon")} ${errMessage}` : ""
+            errMessage ? ` ${errMessage}` : ""
           }`;
           alert(alertMsg);
         }
@@ -114,11 +113,7 @@ export default function ConnectGaloy(props: Props) {
     } catch (e: unknown) {
       console.error(e);
       if (e instanceof Error) {
-        alert(
-          `${t("errors.sms_code_request")}${tCommon("punctuation.colon")} ${
-            e.message
-          }`
-        );
+        alert(`${t("errors.sms_code_request")} ${e.message}`);
       }
     } finally {
       setLoading(false);
@@ -185,7 +180,7 @@ export default function ConnectGaloy(props: Props) {
         console.error(error);
         const errMessage = error?.errors?.[0]?.message || error?.[0]?.message;
         const alertMsg = `${t("errors.setup_failed")}${
-          errMessage ? `${tCommon("punctuation.colon")} ${errMessage}` : ""
+          errMessage ? ` ${errMessage}` : ""
         }`;
         alert(alertMsg);
       } else {
@@ -195,11 +190,7 @@ export default function ConnectGaloy(props: Props) {
     } catch (e: unknown) {
       console.error(e);
       if (e instanceof Error) {
-        alert(
-          `${t("errors.setup_failed")}${tCommon("punctuation.colon")} ${
-            e.message
-          }`
-        );
+        alert(`${t("errors.setup_failed")} ${e.message}`);
       }
     } finally {
       setLoading(false);
@@ -250,7 +241,7 @@ export default function ConnectGaloy(props: Props) {
       if (e instanceof Error) {
         const unauthedRegex = /status code 401/;
         alert(
-          `${t("errors.setup_failed")}${tCommon("punctuation.colon")} ${
+          `${t("errors.setup_failed")} ${
             e.message.match(unauthedRegex) ? t("errors.invalid_jwt") : e.message
           }`
         );

@@ -1,4 +1,5 @@
 import { useState, MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 import type { LNURLWithdrawServiceResponse } from "~/types";
@@ -29,6 +30,8 @@ function LNURLWithdraw(props: Props) {
   const [loadingConfirm, setLoadingConfirm] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { t } = useTranslation("translation", { keyPrefix: "lnurl_withdraw" });
+  const { t: tCommon } = useTranslation("common");
 
   async function confirm() {
     try {
@@ -46,7 +49,7 @@ function LNURLWithdraw(props: Props) {
         },
       });
 
-      setSuccessMessage("Withdraw request sent successfully.");
+      setSuccessMessage(t("withdraw_request_success"));
     } catch (e) {
       console.error(e);
       if (e instanceof Error) {
@@ -90,7 +93,7 @@ function LNURLWithdraw(props: Props) {
           <>
             <dl className="shadow bg-white dark:bg-surface-02dp pt-4 px-4 rounded-lg mb-6 overflow-hidden">
               <dt className="text-sm font-semibold text-gray-500">
-                Amount (Satoshi)
+                {tCommon("amount_satoshi")}
               </dt>
               <dd className="text-sm mb-4 dark:text-white">{renderAmount()}</dd>
             </dl>

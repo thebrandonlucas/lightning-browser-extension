@@ -20,6 +20,7 @@ function Send() {
   const [invoice, setInvoice] = useState("");
   const navigate = useNavigate();
   const { t } = useTranslation("translation", { keyPrefix: "send" });
+  const { t: tCommon } = useTranslation("common");
   const [qrIsOpen, setQrIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -127,7 +128,7 @@ function Send() {
         <div className="mt-4">
           <Button
             type="submit"
-            label={t("actions.continue")}
+            label={tCommon("actions.continue")}
             primary
             fullWidth
             loading={loading}

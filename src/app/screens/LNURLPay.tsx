@@ -219,11 +219,7 @@ function LNURLPay(props: Props) {
     } catch (e) {
       console.error(e);
       if (e instanceof Error) {
-        alert(
-          `${tCommon("errors.error")}${tCommon("punctuation.colon")} ${
-            e.message
-          }`
-        );
+        alert(`${tCommon("errors.error")} ${e.message}`);
       }
     } finally {
       setLoadingConfirm(false);
@@ -349,7 +345,7 @@ function LNURLPay(props: Props) {
                     <Dd>{t("loading")}</Dd>
                     <Dt>{t("description_label")}</Dt>
                     <Dd>{t("loading")}</Dd>
-                    <Dt>{t("amount_label")}</Dt>
+                    <Dt>{tCommon("amount_satoshi")}</Dt>
                     <Dd>{t("loading")}</Dd>
                   </>
                 ) : (
@@ -364,7 +360,7 @@ function LNURLPay(props: Props) {
                     ))}
                     {details.minSendable === details.maxSendable && (
                       <>
-                        <Dt>{t("amount_label")}</Dt>
+                        <Dt>{tCommon("amount_satoshi")}</Dt>
                         <Dd>{`${+details.minSendable / 1000} sat`}</Dd>
                       </>
                     )}
@@ -375,7 +371,7 @@ function LNURLPay(props: Props) {
                 <div>
                   <TextField
                     id="amount"
-                    label={t("amount_label")}
+                    label={tCommon("amount_satoshi")}
                     type="number"
                     min={+details.minSendable / 1000}
                     max={+details.maxSendable / 1000}
@@ -403,7 +399,7 @@ function LNURLPay(props: Props) {
                 <div className="mt-4">
                   <TextField
                     id="name"
-                    label={t("name_label")}
+                    label={tCommon("name")}
                     placeholder="optional"
                     value={userName}
                     onChange={(e) => {
@@ -416,7 +412,7 @@ function LNURLPay(props: Props) {
                 <div className="mt-4">
                   <TextField
                     id="email"
-                    label={t("email_label")}
+                    label={tCommon("email")}
                     placeholder="optional"
                     value={userEmail}
                     onChange={(e) => {

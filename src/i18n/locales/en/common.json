@@ -1,12 +1,13 @@
 {
   "message": "Message",
   "password": "Password",
-  "punctuation": {
-    "colon": ":"
-  },
+  "name": "Name",
+  "email": "Email",
+  "amount_satoshi": "Amount (Satoshi)",
   "actions": {
     "open": "Open",
-    "close": "Close"
+    "close": "Close",
+    "continue": "Continue"
   },
   "errors": {
     "error": "Error:"

@@ -15,6 +15,7 @@ import LocaleSwitcher from "@components/LocaleSwitcher/LocaleSwitcher";
 
 function Settings() {
   const { t } = useTranslation("translation", { keyPrefix: "settings" });
+  const { t: tCommon } = useTranslation("common");
   const [loading, setLoading] = useState(true);
   const [settings, setSettings] = useState<SettingsStorage>({
     websiteEnhancements: false,
@@ -136,7 +137,7 @@ function Settings() {
         {t("personal_data_description")}
       </div>
       <div className="shadow bg-white sm:rounded-md sm:overflow-hidden px-6 py-2 divide-y divide-black/10 dark:divide-white/10 dark:bg-surface-02dp">
-        <Setting title={t("name")} subtitle="">
+        <Setting title={tCommon("name")} subtitle="">
           {!loading && (
             <div className="w-64">
               <Input
@@ -152,7 +153,7 @@ function Settings() {
             </div>
           )}
         </Setting>
-        <Setting title={t("email")} subtitle="">
+        <Setting title={tCommon("email")} subtitle="">
           {!loading && (
             <div className="w-64">
               <Input

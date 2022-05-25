@@ -76,9 +76,6 @@
         "lightning_address": "Your lightning address:",
         "wallet_mobile_title": "Want to use your wallet on your mobile?",
         "wallet_mobile_description": "Import the wallet into Zeus or BlueWallet mobile app using the QR Code."
-      },
-      "actions": {
-        "continue": "Continue"
       }
     },
     "lnd": {
@@ -240,9 +237,9 @@
         "page_label": "Bitcoin Jungle Wallet"
       },
       "errors": {
-        "sms_code_request": "Failed to request a SMS code",
+        "sms_code_request": "Failed to request a SMS code:",
         "sms_code_login": "Failed to login with SMS code",
-        "setup_failed": "Setup failed",
+        "setup_failed": "Setup failed:",
         "missing_jwt": "JWT missing, couldn't log in.",
         "invalid_jwt": "invalid JWT passed",
         "connection_failed": "Connection failed"
@@ -276,18 +273,14 @@
       "part2": "Alby Support"
     },
     "actions": {
-      "unlock": "Unlock",
-      "next": "Next"
+      "unlock": "Unlock"
     }
   },
   "send": {
     "send": "Send",
     "lightning_invoice": "Lightning Invoice",
     "paste_invoice": "Paste invoice, lnurl or lightning address",
-    "waiting_to_scan_invoice": "Waiting to scan invoice",
-    "actions": {
-      "continue": "Continue"
-    }
+    "waiting_to_scan_invoice": "Waiting to scan invoice"
   },
   "receive": {
     "payment_received": "Payment received!",
@@ -331,18 +324,13 @@
     "system": "System",
     "personal_data": "Personal data",
     "personal_data_description": "Payees can request for additional data to be sent with a payment. This  data is not shared with anyone without your consent, you will always be prompted before this data is sent along with a payment.",
-    "name": "Name",
     "name_placeholder": "Enter your name",
-    "email": "Email",
     "email_placeholder": "Enter your email address"
   },
   "lnurl_pay": {
     "send_payment_label": "Send payment to",
     "description_label": "Description",
-    "amount_label": "Amount (Satoshi)",
     "comment_label": "Comment",
-    "name_label": "Name",
-    "email_label": "Email",
     "loading": "loading...",
     "payment_send_success": "Success, payment sent!",
     "metadata": {
@@ -354,6 +342,9 @@
       "payment_aborted": "Payment aborted: Could not fetch invoice.",
       "not_implemented": "Not implemented yet. Please submit an issue to support success action:"
     }
+  },
+  "lnurl_withdraw": {
+    "withdraw_request_success": "Withdraw request sent successfully."
   },
   "components": {
     "qrcode_scanner": {
