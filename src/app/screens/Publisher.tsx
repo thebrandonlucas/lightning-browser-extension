@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
@@ -18,6 +19,7 @@ function Publisher() {
   const [allowance, setAllowance] = useState<Allowance | undefined>();
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "publisher" });
 
   const fetchData = useCallback(async () => {
     try {
@@ -51,9 +53,11 @@ function Publisher() {
         <Container>
           <div className="flex justify-between items-center pt-8 pb-4">
             <dl>
-              <dt className="text-sm font-medium text-gray-500">Allowance</dt>
+              <dt className="text-sm font-medium text-gray-500">
+                {t("allowance")}
+              </dt>
               <dd className="flex items-center font-bold text-xl dark:text-gray-400">
-                {allowance.usedBudget} / {allowance.totalBudget} sat used
+                {allowance.usedBudget} / {allowance.totalBudget} {t("sat_used")}
                 <div className="ml-3 w-24">
                   <Progressbar percentage={allowance.percentage} />
                 </div>

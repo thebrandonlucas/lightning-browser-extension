@@ -27,10 +27,7 @@
       "confirm_password": "Please confirm your password.",
       "mismatched_password": "Passwords don't match.",
       "choose_password_label": "Choose a password:",
-      "confirm_password_label": "Let's confirm you typed it correct:",
-      "actions": {
-        "next": "Next"
-      }
+      "confirm_password_label": "Let's confirm you typed it correct:"
     },
     "test_connection": {
       "edit": "Edit",
@@ -287,7 +284,6 @@
     "waiting_for_payment": "waiting for payment...",
     "copied": "Copied!",
     "receive": "Receive",
-    "amount_label": "Amount",
     "amount_placeholder": "Amount in Satoshi...",
     "description_label": "Description",
     "description_placeholder": "For e.g. who is sending this payment?",
@@ -328,13 +324,10 @@
     "email_placeholder": "Enter your email address"
   },
   "lnurl_pay": {
-    "send_payment_label": "Send payment to",
-    "description_label": "Description",
     "comment_label": "Comment",
     "loading": "loading...",
     "payment_send_success": "Success, payment sent!",
     "metadata": {
-      "description": "Description",
       "full_description": "Full Description",
       "url": "Url"
     },
@@ -357,6 +350,13 @@
       "amount_less_than_minimum": "Amount is less than minimum",
       "amount_exceeds_maximum": "Amount exceeds maximum"
     }
+  },
+  "publisher": {
+    "allowance": "Allowance",
+    "sat_used": "sat used"
+  },
+  "keysend": {
+    "payment_sent": "Payment sent! Preimage:"
   },
   "components": {
     "qrcode_scanner": {

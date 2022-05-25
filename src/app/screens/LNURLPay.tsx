@@ -266,7 +266,7 @@ function LNURLPay(props: Props) {
       return metadata
         .map(([type, content]: [string, string]) => {
           if (type === "text/plain") {
-            return [t("metadata.description"), content];
+            return [tCommon("description"), content];
           } else if (type === "text/long-desc") {
             return [
               t("metadata.full_description"),
@@ -341,16 +341,16 @@ function LNURLPay(props: Props) {
               <dl>
                 {loading || !details ? (
                   <>
-                    <Dt>{t("send_payment_label")}</Dt>
+                    <Dt>{tCommon("send_payment_to")}</Dt>
                     <Dd>{t("loading")}</Dd>
-                    <Dt>{t("description_label")}</Dt>
+                    <Dt>{tCommon("description")}</Dt>
                     <Dd>{t("loading")}</Dd>
                     <Dt>{tCommon("amount_satoshi")}</Dt>
                     <Dd>{t("loading")}</Dd>
                   </>
                 ) : (
                   <>
-                    <Dt>{t("send_payment_label")}</Dt>
+                    <Dt>{tCommon("send_payment_to")}</Dt>
                     <Dd>{getRecipient()}</Dd>
                     {formattedMetadata(details.metadata).map(([dt, dd]) => (
                       <>

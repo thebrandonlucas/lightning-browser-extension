@@ -5,10 +5,15 @@
   "email": "Email",
   "amount": "Amount",
   "amount_satoshi": "Amount (Satoshi)",
+  "description": "Description",
+  "send_payment_to": "Send payment to",
   "actions": {
     "open": "Open",
     "close": "Close",
-    "continue": "Continue"
+    "continue": "Continue",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "next": "Next"
   },
   "errors": {
     "error": "Error:"

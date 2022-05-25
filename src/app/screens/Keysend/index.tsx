@@ -1,5 +1,6 @@
 import { Fragment, useState, MouseEvent } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { CaretLeftIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
 
 import utils from "~/common/lib/utils";
@@ -22,6 +23,8 @@ function Keysend(props: Props) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const auth = useAuth();
+  const { t } = useTranslation("translation", { keyPrefix: "keysend" });
+  const { t: tCommon } = useTranslation("common");
   const [amount, setAmount] = useState(props.valueSat || "");
   const [customRecords] = useState(props.customRecords || {});
   const [destination] = useState(
@@ -43,13 +46,13 @@ function Keysend(props: Props) {
         }
       );
 
-      setSuccessMessage(`Payment sent! Preimage: ${payment.preimage}`);
+      setSuccessMessage(`${t("payment_sent")} ${payment.preimage}`);
 
       auth.fetchAccountInfo(); // Update balance.
     } catch (e) {
       console.log(e);
       if (e instanceof Error) {
-        alert(`Error: ${e.message}`);
+        alert(`${tCommon("errors.error")} ${e.message}`);
       }
     } finally {
       setLoading(false);
@@ -78,8 +81,8 @@ function Keysend(props: Props) {
 
   function elements() {
     const elements = [];
-    elements.push(["Send payment to", destination]);
-    elements.push(["Amount (Satoshi)", renderAmount()]);
+    elements.push([tCommon("send_payment_to"), destination]);
+    elements.push([tCommon("amount_satoshi"), renderAmount()]);
     return elements;
   }
 
@@ -111,7 +114,7 @@ function Keysend(props: Props) {
               <div className="mb-5">
                 <Button
                   onClick={confirm}
-                  label="Confirm"
+                  label={tCommon("actions.confirm")}
                   fullWidth
                   primary
                   loading={loading}
@@ -124,7 +127,7 @@ function Keysend(props: Props) {
                 href="#"
                 onClick={reject}
               >
-                Cancel
+                {tCommon("actions.cancel")}
               </a>
             </div>
           </>

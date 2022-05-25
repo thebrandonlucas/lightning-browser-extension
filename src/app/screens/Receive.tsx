@@ -190,7 +190,7 @@ function Receive() {
             <div className="mb-4">
               <TextField
                 id="description"
-                label={t("description_label")}
+                label={tCommon("description")}
                 placeholder={t("description_placeholder")}
                 onChange={handleChange}
               />
