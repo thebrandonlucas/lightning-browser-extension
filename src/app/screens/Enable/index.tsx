@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-key */
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
 import ConfirmOrCancel from "@components/ConfirmOrCancel";
 import PublisherCard from "@components/PublisherCard";
@@ -11,6 +13,8 @@ type Props = {
 };
 
 function Enable(props: Props) {
+  const { t } = useTranslation("translation", { keyPrefix: "enable" });
+  const { t: tCommon } = useTranslation("common");
   const hasFetchedData = useRef(false);
   const [, setLoading] = useState(true);
   const [remember] = useState(true);
@@ -60,18 +64,31 @@ function Enable(props: Props) {
 
       <div className="text-center p-6">
         <h3 className="text-xl mb-4 dark:text-white">
-          Connect with <i>{props.origin.host}</i>
+          <Trans
+            i18nKey={"connect_with_host"}
+            t={t}
+            values={{ host: props.origin.host }}
+            components={[<i></i>]}
+          />
         </h3>
 
         <p className="text-gray-500 mb-4 dark:text-gray-400">
-          <strong>{props.origin.name}</strong> does not have access to your
-          account.
+          <Trans
+            i18nKey={"no_access"}
+            t={t}
+            values={{ name: props.origin.name }}
+            components={[<strong></strong>]}
+          />
         </p>
         <p className="mb-8 text-gray-500 mb-4 dark:text-gray-400">
-          Do you want to grant them access?
+          {t("grant_access_question")}
         </p>
 
-        <ConfirmOrCancel label="Enable" onConfirm={enable} onCancel={reject} />
+        <ConfirmOrCancel
+          label={tCommon("enable")}
+          onConfirm={enable}
+          onCancel={reject}
+        />
       </div>
     </div>
   );

@@ -358,6 +358,11 @@
   "keysend": {
     "payment_sent": "Payment sent! Preimage:"
   },
+  "enable": {
+    "connect_with_host": "Connect with <0>{{host}}</0>",
+    "no_access": "<0>{{name}}</0> does not have access to your account.",
+    "grant_access_question": "Do you want to grant them access?"
+  },
   "components": {
     "qrcode_scanner": {
       "scan_qrcode": "Scan QR Code",

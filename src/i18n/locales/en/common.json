@@ -13,7 +13,8 @@
     "continue": "Continue",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "next": "Next"
+    "next": "Next",
+    "enable": "Enable"
   },
   "errors": {
     "error": "Error:"
