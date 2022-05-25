@@ -380,6 +380,9 @@
     "settings": "Settings"
   },
   "components": {
+    "confirm_or_cancel": {
+      "only_trusted_sites": "Only connect with sites you trust."
+    },
     "publishers_table": {
       "payments": {
         "part1": "{{host}} • {{paymentsCount}} payments",

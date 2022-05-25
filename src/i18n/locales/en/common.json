@@ -11,6 +11,7 @@
   "payment_send_success": "Success, payment sent!",
   "sat_used": "sat used",
   "sat": "sat",
+  "loading": "Loading...",
   "actions": {
     "open": "Open",
     "close": "Close",
@@ -24,7 +25,8 @@
     "save": "Save",
     "send": "Send",
     "receive": "Receive",
-    "search": "Search"
+    "search": "Search",
+    "back": "Back"
   },
   "errors": {
     "error": "Error:",

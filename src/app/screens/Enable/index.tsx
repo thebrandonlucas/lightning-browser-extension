@@ -85,7 +85,7 @@ function Enable(props: Props) {
         </p>
 
         <ConfirmOrCancel
-          label={tCommon("enable")}
+          label={tCommon("actions.enable")}
           onConfirm={enable}
           onCancel={reject}
         />

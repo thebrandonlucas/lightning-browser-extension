@@ -1,7 +1,10 @@
 import { FormEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "~/i18n/i18nConfig";
 
 import Button from "../Button";
+import { commonI18nNamespace } from "~/i18n/namespaces";
 
 type Props = {
   title: string;
@@ -17,7 +20,7 @@ type Props = {
 function ConnectorForm({
   title,
   description,
-  submitLabel = "Continue",
+  submitLabel = i18n.t("actions.continue", commonI18nNamespace) || "Continue",
   submitLoading = false,
   submitDisabled = false,
   onSubmit,
@@ -25,6 +28,7 @@ function ConnectorForm({
   video,
 }: Props) {
   const navigate = useNavigate();
+  const { t: tCommon } = useTranslation("common");
 
   return (
     <form onSubmit={onSubmit}>
@@ -65,7 +69,7 @@ function ConnectorForm({
       </div>
       <div className="my-8 flex space-x-4 justify-center">
         <Button
-          label="Back"
+          label={tCommon("actions.back")}
           onClick={(e) => {
             navigate(-1);
           }}
