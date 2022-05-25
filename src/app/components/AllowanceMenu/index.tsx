@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { CrossIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
 import { GearIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
+import { useTranslation } from "react-i18next";
 
 import utils from "~/common/lib/utils";
 
@@ -21,6 +22,10 @@ type Props = {
 function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [budget, setBudget] = useState("0");
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.allowance_menu",
+  });
+  const { t: tCommon } = useTranslation("common");
 
   function openModal() {
     setBudget(allowance.totalBudget.toString());
@@ -55,7 +60,9 @@ function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
           <GearIcon className="h-6 w-6" />
         </Menu.Button>
         <Menu.List position="right">
-          <Menu.ItemButton onClick={openModal}>Edit</Menu.ItemButton>
+          <Menu.ItemButton onClick={openModal}>
+            {tCommon("actions.edit")}
+          </Menu.ItemButton>
           <Menu.ItemButton
             danger
             onClick={async () => {
@@ -73,7 +80,7 @@ function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
               }
             }}
           >
-            Delete
+            {tCommon("actions.delete")}
           </Menu.ItemButton>
         </Menu.List>
       </Menu>
@@ -86,7 +93,9 @@ function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
         className="rounded-lg bg-white w-full max-w-lg"
       >
         <div className="p-5 flex justify-between dark:bg-surface-02dp">
-          <h2 className="text-2xl font-bold dark:text-white">Edit Allowance</h2>
+          <h2 className="text-2xl font-bold dark:text-white">
+            {t("edit_allowance")}
+          </h2>
           <button onClick={closeModal}>
             <CrossIcon className="w-6 h-6 dark:text-white" />
           </button>
@@ -95,9 +104,9 @@ function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
           <div className="w-60">
             <TextField
               id="budget"
-              label="Budget"
+              label={t("budget")}
               autoFocus
-              placeholder="sat"
+              placeholder={tCommon("sat")}
               value={budget}
               type="number"
               onChange={(e) => setBudget(e.target.value)}
@@ -107,7 +116,7 @@ function AllowanceMenu({ allowance, onEdit, onDelete }: Props) {
         <div className="flex justify-end p-5 dark:bg-surface-02dp">
           <Button
             onClick={updateAllowance}
-            label="Save"
+            label={tCommon("actions.save")}
             primary
             disabled={budget === ""}
           />

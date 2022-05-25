@@ -1,5 +1,6 @@
 import { ChangeEventHandler } from "react";
 import { Transition } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 
 import Checkbox from "../form/Checkbox";
 import TextField from "../form/TextField";
@@ -17,6 +18,10 @@ function BudgetControl({
   budget,
   onBudgetChange,
 }: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.budget_control",
+  });
+  const { t: tCommon } = useTranslation("common");
   return (
     <div className="mb-6">
       <div className="flex items-center">
@@ -30,7 +35,7 @@ function BudgetControl({
           htmlFor="remember_me"
           className="ml-2 block text-sm text-gray-900 font-medium dark:text-white"
         >
-          Remember and set a budget
+          {t("remember_set_budget")}
         </label>
       </div>
 
@@ -43,15 +48,12 @@ function BudgetControl({
         leaveFrom="scale-100 opacity-100"
         leaveTo="scale-95 opacity-0"
       >
-        <p className="my-3 text-gray-500 text-sm">
-          You may set a balance to not be asked for confirmation on payments
-          until it is exhausted.
-        </p>
+        <p className="my-3 text-gray-500 text-sm">{t("dont_ask_balance")}</p>
         <div>
           <TextField
             id="budget"
-            label="Budget"
-            placeholder="sat"
+            label={t("budget")}
+            placeholder={tCommon("sat")}
             value={budget}
             type="number"
             onChange={onBudgetChange}

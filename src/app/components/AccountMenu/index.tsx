@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { WalletIcon } from "@bitcoin-design/bitcoin-icons-react/outline";
 import {
   AddressBookIcon,
@@ -24,6 +25,9 @@ export type Props = {
 function AccountMenu({ title, subtitle, showOptions = true }: Props) {
   const auth = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "components.account_menu",
+  });
   const { accounts, getAccounts } = useAccounts();
   const [loading, setLoading] = useState(false);
 
@@ -72,10 +76,10 @@ function AccountMenu({ title, subtitle, showOptions = true }: Props) {
       <Menu as="div">
         <Menu.Button className="h-full px-2 rounded-r-md hover:bg-gray-200 dark:hover:bg-white/10 transition-colors duration-200">
           <CaretDownIcon className="h-4 w-4 dark:text-white" />
-          <span className="sr-only">Toggle Dropdown</span>
+          <span className="sr-only">{t("toggle_dropdown")}</span>
         </Menu.Button>
         <Menu.List position="left">
-          <Menu.Subheader>Switch account</Menu.Subheader>
+          <Menu.Subheader>{t("switch_account")}</Menu.Subheader>
           {Object.keys(accounts).map((accountId) => {
             const account = accounts[accountId];
             return (
@@ -106,7 +110,7 @@ function AccountMenu({ title, subtitle, showOptions = true }: Props) {
                 }}
               >
                 <PlusIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-                Add a new account
+                {t("add_new_account")}
               </Menu.ItemButton>
               <Menu.ItemButton
                 onClick={() => {
@@ -114,7 +118,7 @@ function AccountMenu({ title, subtitle, showOptions = true }: Props) {
                 }}
               >
                 <AddressBookIcon className="h-5 w-5 mr-2 text-gray-700 dark:text-gray-300" />
-                Accounts
+                {t("accounts")}
               </Menu.ItemButton>
             </>
           )}

@@ -380,6 +380,21 @@
     "settings": "Settings"
   },
   "components": {
+    "account_menu": {
+      "toggle_dropdown": "Toggle Dropdown",
+      "switch_account": "Switch account",
+      "add_new_account": "Add a new account",
+      "accounts": "Accounts"
+    },
+    "allowance_menu": {
+      "edit_allowance": "Edit Allowance",
+      "budget": "Budget"
+    },
+    "budget_control": {
+      "remember_set_budget": "Remember and set a budget",
+      "dont_ask_balance": "You may set a balance to not be asked for confirmation on payments until it is exhausted.",
+      "budget": "Budget"
+    },
     "confirm_or_cancel": {
       "only_trusted_sites": "Only connect with sites you trust."
     },
