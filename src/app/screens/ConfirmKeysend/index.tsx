@@ -1,5 +1,6 @@
 import { useState, MouseEvent, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import PaymentSummary from "@components/PaymentSummary";
 import utils from "~/common/lib/utils";
@@ -24,6 +25,8 @@ type Props = {
 function Keysend(props: Props) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { t } = useTranslation("translation", { keyPrefix: "confirm_keysend" });
+  const { t: tCommon } = useTranslation("common");
   const [rememberMe, setRememberMe] = useState(false);
   const [origin] = useState(
     props.origin ||
@@ -61,11 +64,11 @@ function Keysend(props: Props) {
       );
 
       msg.reply(payment); // resolves the prompt promise and closes the prompt window
-      setSuccessMessage(`Payment sent! Preimage: ${payment.preimage}`);
+      setSuccessMessage(`${t("payment_sent")} ${payment.preimage}`);
     } catch (e) {
       console.log(e);
       if (e instanceof Error) {
-        alert(`Error: ${e.message}`);
+        alert(`${tCommon("errors.error")} ${e.message}`);
       }
     } finally {
       setLoading(false);
@@ -104,7 +107,7 @@ function Keysend(props: Props) {
             <div className="mb-8">
               <PaymentSummary
                 amount={amount}
-                description={`Send payment to ${destination}`}
+                description={`${tCommon("send_payment_to")} ${destination}`}
               />
             </div>
             <BudgetControl

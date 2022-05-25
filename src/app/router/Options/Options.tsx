@@ -1,5 +1,6 @@
 import { HashRouter, Navigate, Outlet, Routes, Route } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
 import { AuthProvider, useAuth } from "~/app/context/AuthContext";
 import { AccountsProvider } from "~/app/context/AccountsContext";
 import connectorRoutes from "~/app/router/connectorRoutes";
@@ -20,6 +21,7 @@ import Accounts from "@screens/Accounts";
 import Keysend from "@screens/Keysend";
 
 function Options() {
+  const { t } = useTranslation("translation", { keyPrefix: "options" });
   return (
     <AuthProvider>
       <AccountsProvider>
@@ -56,7 +58,7 @@ function Options() {
                   <Route
                     index
                     element={
-                      <ChooseConnector title="Add a new lightning account" />
+                      <ChooseConnector title={t("add_lightning_account")} />
                     }
                   />
                   {connectorRoutes.map((connectorRoute) => (
@@ -88,6 +90,7 @@ function Options() {
 
 const Layout = () => {
   const auth = useAuth();
+  const { t } = useTranslation("translation", { keyPrefix: "options" });
 
   return (
     <div>
@@ -103,10 +106,10 @@ const Layout = () => {
             : ""
         }
       >
-        <Navbar.Link href="/publishers">Websites</Navbar.Link>
-        <Navbar.Link href="/send">Send</Navbar.Link>
-        <Navbar.Link href="/receive">Receive</Navbar.Link>
-        <Navbar.Link href="/settings">Settings</Navbar.Link>
+        <Navbar.Link href="/publishers">{t("websites")}</Navbar.Link>
+        <Navbar.Link href="/send">{t("send")}</Navbar.Link>
+        <Navbar.Link href="/receive">{t("receive")}</Navbar.Link>
+        <Navbar.Link href="/settings">{t("settings")}</Navbar.Link>
       </Navbar>
 
       <Outlet />

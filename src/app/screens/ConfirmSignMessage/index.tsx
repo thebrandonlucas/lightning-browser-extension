@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 import ConfirmOrCancel from "@components/ConfirmOrCancel";
 //import Checkbox from "../../components/Form/Checkbox";
@@ -16,6 +17,10 @@ type Props = {
 };
 
 function ConfirmSignMessage(props: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "confirm_sign_message",
+  });
+  const { t: tCommon } = useTranslation("common");
   const messageRef = useRef(props.message);
   const originRef = useRef(props.origin || getOriginData());
   //const [rememberMe, setRememberMe] = useState(false);
@@ -35,7 +40,7 @@ function ConfirmSignMessage(props: Props) {
         { origin: originRef.current }
       );
       msg.reply(response);
-      setSuccessMessage("Success!");
+      setSuccessMessage(tCommon("success"));
     } catch (e) {
       console.error(e);
       if (e instanceof Error) alert(`Error: ${e.message}`);
@@ -65,7 +70,11 @@ function ConfirmSignMessage(props: Props) {
           <>
             <dl className="shadow bg-white dark:bg-surface-02dp p-4 rounded-lg mb-8">
               <dt className="font-semibold text-gray-500">
-                {originRef.current.host} asks you to sign:
+                <Trans
+                  i18nKey={"asks_to_sign"}
+                  t={t}
+                  values={{ host: originRef.current.host }}
+                />
               </dt>
               <dd className="mb-6 dark:text-white">{messageRef.current}</dd>
             </dl>

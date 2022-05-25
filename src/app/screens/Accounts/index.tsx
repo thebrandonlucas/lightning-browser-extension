@@ -8,6 +8,7 @@ import type { FormEvent } from "react";
 import { useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "~/common/lib/api";
 import utils from "~/common/lib/utils";
@@ -25,7 +26,8 @@ function AccountsScreen() {
   const auth = useAuth();
   const { accounts, getAccounts } = useAccounts();
   const navigate = useNavigate();
-
+  const { t } = useTranslation("translation", { keyPrefix: "accounts" });
+  const { t: tCommon } = useTranslation("common");
   const [currentAccountId, setCurrentAccountId] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newAccountName, setNewAccountName] = useState("");
@@ -51,7 +53,7 @@ function AccountsScreen() {
   }
 
   async function removeAccount({ id, name }: AccountAction) {
-    if (window.confirm(`Are you sure you want to delete account: ${name}?`)) {
+    if (window.confirm(`${t("delete_account_confirmation")} ${name}?`)) {
       let nextAccountId;
       let accountIds = Object.keys(accounts);
       if (auth.account?.id === id && accountIds.length > 1) {
@@ -73,13 +75,13 @@ function AccountsScreen() {
   return (
     <Container>
       <h2 className="mt-12 mb-6 text-2xl font-bold dark:text-white">
-        Accounts
+        {t("accounts")}
       </h2>
       <div className="shadow border-b border-gray-200 dark:border-gray-500 sm:rounded-lg bg-white dark:bg-surface-02dp">
         <div className="p-6">
           <Button
             icon={<PlusIcon className="w-5 h-5 mr-2" />}
-            label="Add account"
+            label={t("actions.add_account")}
             primary
             onClick={() => navigate(`/accounts/new`)}
           />
@@ -127,7 +129,7 @@ function AccountsScreen() {
                             }, 50);
                           }}
                         >
-                          Edit
+                          {tCommon("actions.edit")}
                         </Menu.ItemButton>
 
                         <Menu.ItemButton
@@ -139,7 +141,7 @@ function AccountsScreen() {
                             })
                           }
                         >
-                          Delete
+                          {tCommon("actions.delete")}
                         </Menu.ItemButton>
                       </Menu.List>
                     </Menu>
@@ -154,12 +156,14 @@ function AccountsScreen() {
           closeTimeoutMS={200}
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          contentLabel="Edit account name"
+          contentLabel={t("edit_account_name")}
           overlayClassName="bg-black bg-opacity-25 fixed inset-0 flex justify-center items-center p-5"
           className="rounded-lg bg-white w-full max-w-lg"
         >
           <div className="p-5 flex justify-between dark:bg-surface-02dp">
-            <h2 className="text-2xl font-bold dark:text-white">Edit account</h2>
+            <h2 className="text-2xl font-bold dark:text-white">
+              {t("actions.edit_account")}
+            </h2>
             <button onClick={closeModal}>
               <CrossIcon className="w-6 h-6 dark:text-white" />
             </button>
@@ -179,7 +183,7 @@ function AccountsScreen() {
                 <TextField
                   autoFocus
                   id="acountName"
-                  label="Name"
+                  label={tCommon("name")}
                   onChange={(e) => setNewAccountName(e.target.value)}
                   value={newAccountName}
                 />
@@ -188,7 +192,7 @@ function AccountsScreen() {
 
             <div className="flex justify-end p-5 dark:bg-surface-02dp">
               <Button
-                label="Save"
+                label={tCommon("actions.save")}
                 type="submit"
                 primary
                 disabled={newAccountName === ""}

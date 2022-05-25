@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import lightningPayReq from "bolt11";
 
 import msg from "~/common/lib/msg";
@@ -24,6 +25,7 @@ function ConfirmPayment(props: Props) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const auth = useAuth();
+  const { t: tCommon } = useTranslation("common");
   const invoiceRef = useRef(
     lightningPayReq.decode(
       props.paymentRequest || (searchParams.get("paymentRequest") as string)
@@ -54,7 +56,7 @@ function ConfirmPayment(props: Props) {
       );
       auth.fetchAccountInfo(); // Update balance.
       msg.reply(response);
-      setSuccessMessage("Success, payment sent!");
+      setSuccessMessage(tCommon("payment_send_success"));
     } catch (e) {
       console.error(e);
       if (e instanceof Error) alert(`Error: ${e.message}`);

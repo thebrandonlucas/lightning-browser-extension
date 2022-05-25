@@ -205,7 +205,7 @@ function LNURLPay(props: Props) {
       } else {
         setSuccessAction({
           tag: "message",
-          message: t("payment_send_success"),
+          message: tCommon("payment_send_success"),
         });
       }
 

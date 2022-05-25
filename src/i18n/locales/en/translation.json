@@ -31,7 +31,6 @@
     },
     "test_connection": {
       "edit": "Edit",
-      "success": "Success!",
       "ready": "Awesome, you’re ready to go!",
       "tutorial": "Now you’ve connected your node would you like to go through a tutorial?",
       "try_tutorial": "Give it a try now",
@@ -326,7 +325,6 @@
   "lnurl_pay": {
     "comment_label": "Comment",
     "loading": "loading...",
-    "payment_send_success": "Success, payment sent!",
     "metadata": {
       "full_description": "Full Description",
       "url": "Url"
@@ -362,6 +360,28 @@
     "connect_with_host": "Connect with <0>{{host}}</0>",
     "no_access": "<0>{{name}}</0> does not have access to your account.",
     "grant_access_question": "Do you want to grant them access?"
+  },
+  "confirm_sign_message": {
+    "asks_to_sign": "{{host}} asks you to sign:"
+  },
+  "confirm_keysend": {
+    "payment_sent": "Payment sent! Preimage:"
+  },
+  "accounts": {
+    "delete_account_confirmation": "Are you sure you want to delete account:",
+    "accounts": "Accounts",
+    "edit_account_name": "Edit account name",
+    "actions": {
+      "add_account": "Add account",
+      "edit_account": "Edit account"
+    }
+  },
+  "options": {
+    "add_lightning_account": "Add a new lightning account",
+    "websites": "Websites",
+    "send": "Send",
+    "receive": "Receive",
+    "settings": "Settings"
   },
   "components": {
     "qrcode_scanner": {
